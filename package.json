@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "react": "16.8.3",
+    "react-device-detect": "^1.6.2",
     "react-native": "^0.59.8",
+    "react-native-device-info": "^2.0.0",
     "react-native-gesture-handler": "^1.2.1",
     "react-native-progress-bar-animated": "^1.0.6",
     "react-navigation": "^3.9.1",
