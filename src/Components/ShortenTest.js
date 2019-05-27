@@ -2,47 +2,35 @@
   
 import React, { Component } from 'react';
 import { Alert, Text, View, ImageBackground, StyleSheet, TouchableOpacity, Dimensions, ActivityIndicator} from 'react-native';
-import getContent from '../data/getContent';
+import getContentShorten from '../data/getContentShorten';
 
-export default class Test extends Component {
+
+export default class ShortenTest extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       isLoading: true,
-      Title: this.props.Title,
-      level: this.props.level,
-      sttt: 3,
     }
   }
+
   componentDidMount(){
-    getContent(this.state.Title, this.state.level, this.state.sttt)
+    getContentShorten('RutGon3', '1')
     .then((dataSource) => {
       this.setState({
         isLoading: false,
         dataSource: dataSource
+      }, function(){
+
       });
     })
-    .catch(error => console.error(error));
+    .catch((error) => {
+      console.error(error);
+    });
   }
-
-
-  onPressButton = (item, level, image, Item, sttt) => {
-    sttt += 1;
-    if (sttt == 4)
-      this.props.navigate ('Result', {title: item, Title: Item, level: level, img: image, sttt: sttt});
-    else
-      this.props.navigate ('Test', {title: item, Title: Item, level: level, img: image, sttt: sttt});
-  }
-  // getLevel(level){
-  //   if(level==='Dễ')
-  //     return "De";
-  //   if(level==='Trung bình')
-  //     return "TB";
-  //   return "Kho";
-  // }
+  
   
   render() {
-    const { Title, title, level, img, stt } = this.props;
+    const {title, level} = this.props;
     
     if(this.state.isLoading){
       return(
@@ -58,13 +46,12 @@ export default class Test extends Component {
             <View style={styles.styleTheme}>
               <Text style={styles.textTheme}>Chủ Đề:</Text>
               <Text style={styles.textTheme}>{title}</Text>
-       
-              {/* {this.setState({Title: Title})} */}
+              
             </View>
 
             <View style={{ flexDirection:'row', justifyContent:'center'}}>
               <Text style={styles.textTop}>Bạn đã hoàn thành: </Text>
-              <Text style={styles.textTop}>{this.state.sttt}/3</Text>
+              <Text style={styles.textTop}>1/3</Text>
             </View>
           </View>
 
@@ -93,7 +80,7 @@ export default class Test extends Component {
           </View>
             
           <View style={{flex: 1 }}>
-            <TouchableOpacity style={styles.buttonCheck} onPress={ () => this.onPressButton(title, level, img, Title, this.state.stt)}>  
+            <TouchableOpacity style={styles.buttonCheck} onPress={() => this.props.navigate('Test',{title: this.props.title, img: this.props.img})}>  
                 <Text style={{ padding: 5 * ratio(height), fontWeight: 'bold', fontSize: 16 * ratio(height), color:'#FFFFFF' }}>Kiểm Tra</Text>
             </TouchableOpacity>
           </View>

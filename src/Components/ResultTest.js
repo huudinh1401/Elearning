@@ -5,6 +5,7 @@ import { Image, Dimensions, Text, View, StyleSheet, TouchableOpacity} from 'reac
 
 
 export default class Result extends Component {
+  
  
   render() {
 

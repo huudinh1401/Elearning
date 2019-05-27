@@ -2,7 +2,7 @@
   
 import React, { Component } from 'react';
 import { View, StyleSheet} from 'react-native';
-import Test from '../Components/Test';
+import ShortenTest from '../Components/ShortenTest';
 
 const resultScreen = "ShortenSkillResult";
 export default class ShortenSkillTest extends Component {
@@ -15,11 +15,13 @@ export default class ShortenSkillTest extends Component {
   render() {
     const { navigate } = this.props.navigation;
     const titleName = this.props.navigation.getParam ('title', 'No_Name');
+    const TitleName = this.props.navigation.getParam ('Title', 'No_Name');
     return (
       <View style = {styles.container}>
-        <Test
+        <ShortenTest
           navigate = { navigate }
           title = { titleName }
+          Title = { TitleName }
 
           nextScreen = { resultScreen }
         />

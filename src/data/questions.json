@@ -1,0 +1,395 @@
+{
+	"questions": [{
+		"CB1": {
+			"De": {
+				"a": {
+					"type": "Chọn bản dịch đúng",
+					"content": "Tôi là một người đàn ông",
+					"answerA": "I am a man",
+					"answerB": "I am a boy",
+					"answerC": "I am a water",
+					"answerD": "I am a student",
+					"answer": "I am a man"
+				},
+				"b": {
+					"type": "Dịch câu này",
+					"content": "He is a man",
+					"answerA": "Tôi là một người đàn ông",
+					"answerB": "Anh ấy là một cậu bé", 
+					"answerC": "Anh ấy là một người đàn ông",
+					"answerD": "Tôi là một người đàn ông", 
+					"answer": "Anh ấy là một người đàn ông"
+				},
+				"c": {
+					"type": "Chọn bản dịch đúng",
+					"content": "Cô ấy là một người phụ nữ",
+					"answerA": "She is a man",
+					"answerB": "She is a woman",
+					"answerC": "She is an apple",
+					"answerD": "She is a girl",
+					"answer": "She is a woman"
+				}
+			},
+			"TB": {
+				"a": {
+					"type": "Dịch câu sau",
+					"content": "He is a man and I am a boy",
+					"answerA": "Anh ấy là một cậu bé và tôi là một người đàn ông",
+					"answerB": "Anh ấy là một cậu bé và tôi là một cậu bé",
+					"answerC": "Anh ấy là một người đàn ông và tôi là một người đàn ông",
+					"answerD": "Anh ấy là một người đàn ông và tôi là một cậu bé",
+					"answer": "Anh ấy là một người đàn ông và tôi là một cậu bé"
+				},
+				"b": {
+					"type": "Chọn bản dịch đúng",
+					"content": "Anh ấy là một người đàn ông và tôi là một cậu bé",
+					"answerA": "He is a boy and I am a man",
+					"answerB": "He is a man and I am a boy", 
+					"answerC": "He is a man and I am a man",
+					"answerD": "He is a boy and I am a boy", 
+					"answer": "He is a man and I am a boy"
+				},
+				"c": {
+					"type": "Dịch câu sau",
+					"content": "Ăn một quả táo đi",
+					"answerA": "Eat an orange",
+					"answerB": "Eat an apple",
+					"answerC": "Eat a apple",
+					"answerD": "Eat a orange",
+					"answer": "Eat an apple"
+				}
+			},
+			"Kho": {
+				"a": {
+					"type": "Dịch câu này",
+					"content": "Người phụ nữ uống nước",
+					"answerA": "The woman drinks water",
+					"answerB": "The woman drink water",
+					"answerC": "The woman drinks bread",
+					"answerD": "The woman drink bread",
+					"answer": "The woman drinks water"
+				},
+				"b": {
+					"type": "Dịch câu này",
+					"content": "Tôi ăn bánh mì",
+					"answerA": "I eats bread",
+					"answerB": "I'm eat bread",
+					"answerC": "I eat bread",
+					"answerD": "I eat an bread",
+					"answer": "I eat bread"
+				},
+				"c": {
+					"type": "Dịch câu sau",
+					"content": "I eat and drink",
+					"answerA": "Tôi ăn và tôi uống",
+					"answerB": "Tôi uống và ăn",
+					"answerC": "Tôi uống và tôi ăn",
+					"answerD": "Tôi ăn và uống",
+					"answer": "Tôi ăn và uống"
+				}
+
+			}
+		},
+		"CB2": {
+			"De": {
+				"a": {
+					"type": "Chọn bản dịch đúng",
+					"content": "Tôi ăn một quả táo",
+					"answerA": "I eat an orange",
+					"answerB": "I eat an apple",
+					"answerC": "I eat a cake",
+					"answerD": "I like an apple",
+					"answer": "I eat an apple"
+				},
+				"b": {
+					"type": "Dịch câu này",
+					"content": "The woman eats rice",
+					"answerA": "Người phụ nữ đang ăn cơm",
+					"answerB": "Người phụ nữ ăn cơm",
+					"answerC": "Người đàn ông ăn cơm",
+					"answerD": "Người đàn ông đang ăn cơm",
+					"answer": "Người phụ nữ ăn cơm"
+				},
+				"c": {
+					"type": "Dịch câu này",
+					"content": "You eat an apple",
+					"answerA": "Bạn ăn một quả táo",
+					"answerB": "Bạn đang ăn một quả táo",
+					"answerC": "Bạn ăn một quả cam",
+					"answerD": "Bạn đang ăn một quả cam",
+					"answer": "Bạn ăn một quả táo"
+				}
+			},
+			"TB": {
+				"a": {
+					"type": "Dịch câu này",
+					"content": "We are girls",
+					"answerA": "Chúng tôi là cô gái",
+					"answerB": "Chúng tôi là những cô gái",
+					"answerC": "Họ là những cô gái",
+					"answerD": "Chúng tôi là những người phụ nữ",
+					"answer": "Chúng tôi là những cô gái"
+				},
+				"b": {
+					"type": "Dịch câu này",
+					"content": "The child drinks water",
+					"answerA": "Đứa trẻ đang uống nước",
+					"answerB": "Cậu bé đang uống nước",
+					"answerC": "Đứa trẻ uống nước",
+					"answerD": "Cậu bé uống nước",
+					"answer": "Đứa trẻ uống nước"
+				},
+				"c": {
+					"type": "Dịch câu này",
+					"content": "You have an apple",
+					"answerA": "Bạn có một quả táo",
+					"answerB": "Bạn ăn một quả táo",
+					"answerC": "Bạn mất một quả táo",
+					"answerD": "Bạn ném một quả táo",
+					"answer": "Bạn có một quả áo"
+				}
+			},
+			"Kho": {
+				"a": {
+					"type": "Dịch câu sau",
+					"content": "She has a newspaper",
+					"answerA": "Cô ấy đọc một tờ báo",
+					"answerB": "Cô ấy đang đọc một tờ báo",
+					"answerC": "Cố ấy mua một tờ báo",
+					"answerD": "Cô ấy có một tờ báo",
+					"answer": "Cô ấy có một tờ báo"
+				},
+				"b": {
+					"type": "Dịch câu này",
+					"content": "It is a newspaper",
+					"answerA": "Nó là một tờ báo",
+					"answerB": "Kia là một tờ báo",
+					"answerC": "Nó mua một tờ báo",
+					"answerD": "Nó đọc một tờ báo",
+					"answer": "Nó là một tờ báo"
+				},
+				"c": {
+					"type": "Chọn bản dịch đúng",
+					"content": "Bạn có một quả táo",
+					"answerA": "You have a apple",
+					"answerB": "You have an apple",
+					"answerC": "you have one apple",
+					"answerD": "you has an apple",
+					"answer": "You have an apple"
+				}
+			
+			}
+		},
+		"CumTu": {
+			"De": {
+				"a": {
+					"type": "I am not a girl",
+					"content": "I am not a girl",
+					"answerA": "Tôi là một cô gái",
+					"answerB": "Tôi không phải là một người phụ nữ",
+					"answerC": "Tôi không phải là một cô gái",
+					"answerD": "Tôi là một người phụ nữ",
+					"answer": "Tôi không phải là một cô gái"
+				},
+				"b": {
+					"type": "Xin chào, chào buổi sáng!",
+					"content": "Chọn bản dịch đúng",
+					"answerA": "Thanks, good morning!",
+					"answerB": "Bye, good morning!",
+					"answerC": "Hello, good morning!",
+					"answerD": "Hello. merry morning!",
+					"answer": "Hello, good morning!"
+				},
+				"c": {
+					"type": "Dịch câu này",
+					"content": "Hello, how are you?",
+					"answerA": "Xin chào, bạn có khỏe không?",
+					"answerB": "Xin chào, bạn đi đâu đấy?",
+					"answerC": "Xin chào, bạn làm gì thế?",
+					"answerD": "Xin chào, bạn bao nhiêu tuổi?",
+					"answer": "Xin chào, bạn có khỏe không?"
+				}
+			},
+			"TB": {
+				"a": {
+					"type": "Chọn bản dịch đúng",
+					"content": "Anh ấy nói",
+					"answerA": "He walks",
+					"answerB": "He speaks",
+					"answerC": "He hears",
+					"answerD": "He runs",
+					"answer": "He speaks"
+				},
+				"b": {
+					"type": "Dịch câu này",
+					"content": "He speaks English",
+					"answerA": "Anh ấy nghe tiếng Anh",
+					"answerB": "Anh ấy viết tiếng Anh",
+					"answerC": "Anh ấy nói tiếng Anh",
+					"answerD": "Anh ấy hát tiếng Anh",
+					"answer": "Anh ấy nói tiếng Anh"
+				},
+				"c": {
+					"type": "Dịch câu này",
+					"content": "Speak English, please!",
+					"answerA": "Nói Tiếng Anh đi!",
+					"answerB": "Hãy nói tiếng Anh!",
+					"answerC": "Làm ơn nói tiếng Anh!",
+					"answerD": "Đừng nói tiếng Anh!",
+					"answer": "Làm ơn nói tiếng Anh!"
+				}
+			},
+			"Kho": {
+				"a": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"b": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"c": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				}
+			
+			}
+		},
+		"KT3": {
+			"a": {
+				"type": "",
+				"content": "",
+				"answerA": "",
+				"answerB": "",
+				"answerC": "",
+				"answerD": "",
+				"answer": ""
+			},
+			"b": {
+				"type": "",
+				"content": "",
+				"answerA": "",
+				"answerB": "",
+				"answerC": "",
+				"answerD": "",
+				"answer": ""
+			},
+			"c": {
+				"type": "",
+				"content": "",
+				"answerA": "",
+				"answerB": "",
+				"answerC": "",
+				"answerD": "",
+				"answer": ""
+			}
+        },
+		"ĐongVat": {
+			"De": {
+				"a": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"b": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"c": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				}
+			},
+			"TB": {
+				"a": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"b": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"c": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				}
+			},
+			"Kho": {
+				"a": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"b": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				},
+				"c": {
+					"type": "",
+					"content": "",
+					"answerA": "",
+					"answerB": "",
+					"answerC": "",
+					"answerD": "",
+					"answer": ""
+				}
+			
+			}
+		}
+
+	}]
+}
+
