@@ -6,9 +6,7 @@ import ResultShortenSkill from '../Components/ResultShortenSkill';
 
 
 export default class ShortenSkillResult extends Component {
-    static navigationOptions = {
-        title: 'Shorten Skill Result',
-    };
+    
   
   render() {
 

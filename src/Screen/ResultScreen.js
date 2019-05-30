@@ -5,9 +5,7 @@ import { View, StyleSheet } from 'react-native';
 import ResultTest from '../Components/ResultTest'
 
 export default class Result extends Component {
-    static navigationOptions = {
-        title: 'Kết Quả',
-    };
+    
  
   render() {
     const { navigate } = this.props.navigation;

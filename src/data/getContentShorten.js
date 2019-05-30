@@ -5,7 +5,6 @@ function getContentShorten(title, stt) {
     return fetch(URL+title+"/"+stt+".json")
     .then(res => res.json())
     .then(resJSON => resJSON)
-
 }
 // getType('CB1', 'TB', '3')
 // .then(content => console.log(content))

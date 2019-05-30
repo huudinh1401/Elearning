@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, StyleSheet} from 'react-native';
 import Test from '../Components/Test';
 
-const stt = 1;
-export default class Exercise extends Component {
+
+export default class Next extends Component {
   
 
   render() {
@@ -12,6 +12,7 @@ export default class Exercise extends Component {
     const TitleName = this.props.navigation.getParam ('Title', 'No_Name');
     const titleLevel = this.props.navigation.getParam ('level', 'No_Name');
     const titleImage = this.props.navigation.getParam ('img', 'No_Name');
+    const stt = this.props.navigation.getParam ('stt', 'No_Name');
 
     return (
       <View style = {styles.container}>

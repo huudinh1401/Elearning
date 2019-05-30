@@ -5,18 +5,18 @@ import ItemTitle from '../Components/ItemTitle';
 
 const itemCoBan1 = "Cơ Bản 1";
   const ItemCoBan1 = "CB1";
-  const levelCoBan1 = 'Kho';
-  const stt = 1;
+  const levelCoBan1 = 'Difficult';
+  
   const ImageCoBan1 = require('../image/egg.png');
 
 const itemCoBan2 = 'Cơ Bản 2';
   const ItemCoBan2 = "CB2";
-  const levelCoBan2 = 'De';
+  const levelCoBan2 = 'Easy';
   const ImageCoBan2 = require('../image/eggcb2_2.png');
 
 const itemCumTu = 'Cụm Từ';
   const ItemCumTu = "CumTu";
-  const levelCumTu = 'De';
+  const levelCumTu = 'Easy';
   const ImageCumTu = require('../image/cumtu_1.png');
 
 const itemDongVat = 'Động Vật';
@@ -57,20 +57,14 @@ const itemTest9 = 'Kiểm Tra Rút Gọn 9 Kỹ Năng';
   const ItemTest9 = "RutGon9";
 
 export default class ElearningApp extends Component {
-  static navigationOptions = {
-    title: 'Elearning',
-    headerTitleStyle: {
-      textAlign: 'center',
-      flexGrow:1,
-      alignSelf:'center',
-    },
-  };
+
+  
   getImageLevel (level){
     if (level === 'Chưa mở')
       return require('../image/0.png');
-    if (level === 'De')
+    if (level === 'Easy')
       return require('../image/1.png');
-    if (level === 'TB')
+    if (level === 'Medium')
       return require('../image/2.png');
     return require('../image/3.png');
   }
@@ -83,7 +77,7 @@ export default class ElearningApp extends Component {
         <ScrollView>
           <ItemTitle 
             navigate = { navigate }
-            item1 = { itemCoBan1 } stt = {stt}  Item1 = { ItemCoBan1 } level1 = { levelCoBan1 } image1 = {ImageCoBan1} imageLevel1 = {this.getImageLevel (levelCoBan1)}
+            item1 = { itemCoBan1 }  Item1 = { ItemCoBan1 } level1 = { levelCoBan1 } image1 = {ImageCoBan1} imageLevel1 = {this.getImageLevel (levelCoBan1)}
             item2 = { itemCoBan2 }  Item2 = { ItemCoBan2 } level2 = { levelCoBan2 } image2 = {ImageCoBan2} imageLevel2 = {this.getImageLevel (levelCoBan2)}
             item3 = { itemCumTu }   Item3 = { ItemCumTu } level3 = { levelCumTu }  image3 = {ImageCumTu} imageLevel3 = {this.getImageLevel (levelCumTu)}
             itemTest = { itemTest3 } ItemTest = { ItemTest3 }

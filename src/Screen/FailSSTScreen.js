@@ -5,15 +5,8 @@ import { Image, Alert, Text, View, StyleSheet, TouchableOpacity} from 'react-nat
 
 
 export default class FailShortenSkillResult extends Component {
-    static navigationOptions = {
-        title: 'Shorten Skill Result',
-    };
-    // state = {
-    //   progress: 80,
-    //   progressWithOnComplete: 0,
-    //   progressCustomized: 0,
-    //   text: '8',
-    // }
+    
+   
   render() {
 
     

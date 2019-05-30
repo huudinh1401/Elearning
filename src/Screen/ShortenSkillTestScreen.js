@@ -6,9 +6,7 @@ import ShortenTest from '../Components/ShortenTest';
 
 const resultScreen = "ShortenSkillResult";
 export default class ShortenSkillTest extends Component {
-    static navigationOptions = {
-        title: 'Kiểm Tra Rút Ngắn Kỹ Năng',
-    }
+    
     // state = {
     //   text: '3',
     // }

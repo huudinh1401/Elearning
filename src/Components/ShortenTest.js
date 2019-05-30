@@ -81,7 +81,7 @@ export default class ShortenTest extends Component {
             
           <View style={{flex: 1 }}>
             <TouchableOpacity style={styles.buttonCheck} onPress={() => this.props.navigate('Test',{title: this.props.title, img: this.props.img})}>  
-                <Text style={{ padding: 5 * ratio(height), fontWeight: 'bold', fontSize: 16 * ratio(height), color:'#FFFFFF' }}>Kiểm Tra</Text>
+                <Text style={{ padding: 5 * ratio(height), fontWeight: 'bold', fontSize: 17 * ratio(height), color:'#FFFFFF' }}>Kiểm Tra</Text>
             </TouchableOpacity>
           </View>
           

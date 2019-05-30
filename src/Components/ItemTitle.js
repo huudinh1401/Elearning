@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Alert, StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
+import '../data/getContent';
 
 
 export default class ItemTitle extends Component {
@@ -8,12 +9,12 @@ export default class ItemTitle extends Component {
   //   .then((content) => {return content})
   //   .catch(err => console.log(err));
   // }
-  _onPressButton = (item, level, image, Item, stt) => {
+  _onPressButton = (item, level, image, Item) => {
     Alert.alert(
-      item, 'Mức độ: ' + level,
+      item, 'Level: ' + level,
       [
         { text: 'Hủy Bỏ', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-        { text: 'Bắt Đầu', onPress: () => {this.props.navigate ('Test', {title: item, Title: Item, level: level, img: image, stt: stt})
+        { text: 'Bắt Đầu', onPress: () => {this.props.navigate ('Test', {title: item, Title: Item, level: level, img: image})
         }},
       ],
       {cancelable: false},
