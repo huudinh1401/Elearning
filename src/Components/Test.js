@@ -1,11 +1,14 @@
 
   
 import React, { Component } from 'react';
-import { ActivityIndicator, Alert, Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux'
 import getContent from '../data/getContent';
-import { fetchError, fetchSuccess, Choosed } from '../redux/actionCreators';
+import { fetchError, fetchSuccess, isChoosingA, isChoosingB, isChoosingC, isChoosingD, isCheckingTrue, isCheckingFalse, isContinue } from '../redux/actionCreators';
 import ItemTest from './ItemTest';
+import Form from './Form';
+import ButtonCheck from './ButtonCheck';
+// import ButtonContinue from './ButtonContinue';
 
 
 
@@ -13,9 +16,10 @@ class Test extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      isLoading: true
+      isLoading: true,
     }
   }
+  //this.onPressContinue(title,level, img, Title, stt)
   componentDidMount(){
     const { Title, level, stt } = this.props;
 
@@ -29,18 +33,18 @@ class Test extends Component {
     .catch(()=>this.props.fetchError())
   }
 
-  onPressButton = (item, level, image, Item, stt) => {
+  onPressContinue = (title, level, image, Title, stt) => {
+    this.props.isContinue();
     if (stt == 3)
-      this.props.navigate ('Result', { title: item, Title: Item, level: level, img: image });
+      this.props.navigate ('Result', { title: title, Title: Title, level: level, img: image });
     else {
       if (stt % 2 == 0)
-        this.props.navigate ('NextNext', { title: item, Title: Item, level: level, img: image, stt: stt+1 });
-      else  this.props.navigate ('Next', { title: item, Title: Item, level: level, img: image, stt: stt+1 });
+        this.props.navigate ('NextNext', { title: title, Title: Title, level: level, img: image, stt: stt + 1 });
+      else  this.props.navigate ('Next', { title: title, Title: Title, level: level, img: image, stt: stt + 1 });
     }
   }
 
   render() {
-    
     if(this.state.isLoading){
       return(
         <View style={{flex: 3, padding: 50}}>
@@ -48,10 +52,11 @@ class Test extends Component {
         </View>
       )
     }
+
+    const {textTitle, textAnswer, backgroundColorChecking} = this.props;
     const { Title, level, img, title, stt } = this.props;
     const { type, content, answerA, answerB, answerC, answerD, answer } = this.props.dataSource;
     
-  
     return (
       
       <ImageBackground source={require('../image/hoavan.jpg')} style={{width: '100%', height: '100%'}}>
@@ -69,15 +74,23 @@ class Test extends Component {
 
           <View style={{flex: 4 }}>
            <ItemTest
-            type = {type}   content = {content} answer = {answer}
+            type = {type}   content = {content} answer = {answer} stt = {stt}
             answerA = {answerA} answerB ={answerB} answerC = {answerC} answerD = {answerD}
            />
           </View>
             
-          <View style={{flex: 1 }}>
-            <TouchableOpacity style={styles.buttonCheck} onPress={ () => this.onPressButton(title, level, img, Title, stt)}>  
-                <Text style={{ padding: 5 * ratio(height), fontWeight: 'bold', fontSize: 18 * ratio(height), color:'#FFFFFF' }}>Tiếp Tục</Text>
-            </TouchableOpacity>
+          <View style={{flex: 2, marginTop: 70 * ratio(height), backgroundColor: backgroundColorChecking}}>
+            <View style={{marginTop: 20 * ratio(height)}}>
+              { this.props.Checking? <Form textTitle = { textTitle } textAnswer = { textAnswer }/>: null}
+            </View>
+            <View > 
+              {
+                this.props.Checking? 
+                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,level, img, Title, stt)}>  
+                    <Text style={styles.textContinueButton}> Tiếp Tục </Text>
+                </TouchableOpacity> : <ButtonCheck answer = {answer} Choosed = {this.props.Choosed}/>
+              } 
+              </View>
           </View>
           
         </View>
@@ -96,12 +109,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  buttonCheck: {
+
+  buttonContinue: {
     borderRadius: 5 * ratio(height),
     alignItems: 'center',
-    backgroundColor:'#330099',
-    margin: 30 * ratio(height),
+    backgroundColor:'green',
+    marginHorizontal: 30 * ratio(height),
+    marginTop: 10 * ratio(height),
   },
+  textContinueButton: { 
+    padding: 5 * ratio(height), 
+    textDecorationLine: 'underline',
+    fontWeight: 'bold', 
+    fontSize: 18 * ratio(height), 
+    color:'#FFFFFF' },
+
   styleTheme: {
     backgroundColor:'#FFFFCC',
     flexDirection:'row',
@@ -128,8 +150,12 @@ function mapStateToProps(state) {
   return {
     dataSource: state.dataSource,
     error: state.error,
-    Choosed: state.Choosed
+    Choosed: state.Choosed,
+    Checking: state.Checking,
+    textAnswer: state.textAnswer,
+    textTitle: state.textTitle,
+    backgroundColorChecking: state.backgroundColorChecking
   };
 }
 
-export default connect(mapStateToProps, { fetchSuccess, fetchError, Choosed })(Test);
+export default connect(mapStateToProps, { fetchSuccess, fetchError, isChoosingA, isChoosingB, isChoosingC, isChoosingD, isCheckingTrue, isCheckingFalse, isContinue })(Test);

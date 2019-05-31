@@ -12,15 +12,49 @@ export function fetchError() {
     return { type: 'FETCH_ERROR' };
 }
 
-export function Choosed(Choosed) {
+export function isChoosingA(Choosed) {
     return { 
-        type: 'IS_CHOOSING',
+        type: 'IS_CHOOSING_A',
         Choosed
+    };
+}
+export function isChoosingB(Choosed) {
+    return { 
+        type: 'IS_CHOOSING_B',
+        Choosed
+    };
+}
+export function isChoosingC(Choosed) {
+    return { 
+        type: 'IS_CHOOSING_C',
+        Choosed
+    };
+}
+export function isChoosingD(Choosed) {
+    return { 
+        type: 'IS_CHOOSING_D',
+        Choosed
+    };
+}
+export function isCheckingTrue() {
+    return { 
+        type: 'IS_CHECKING_TRUE',
+    };
+}
+export function isCheckingFalse(textAnswer) {
+    return { 
+        type: 'IS_CHECKING_FALSE',
+        textAnswer
+    };
+}
+export function isContinue() {
+    return { 
+        type: 'IS_CONTINUE',
     };
 }
 // export function fetchDataThunk(cityName) {
 //     return dispatch => {
-//         dispatch(startFetchData());
+//         dispatch(startFetchData());IS_CHECKING
 //         getTemp(cityName)
 //         .then(temp => dispatch(fetchSuccess(cityName, temp)))
 //         .catch(() => dispatch(fetchError()));
