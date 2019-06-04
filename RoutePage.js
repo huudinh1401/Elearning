@@ -28,26 +28,26 @@ const RoutePage = createStackNavigator(
     Test: {
       screen: TestScreen,
       navigationOptions: {
-        title: 'Bài Học',
+        header: null,
       }
     },
     Next: {
       screen: Next,
       navigationOptions: {
-        title: 'Bài Học',
+        header: null,
       }
     },
     NextNext: {
       screen: NextNext,
       navigationOptions: {
-        title: 'Bài Học',
+        header: null,
       }
     },
   
     Result: {
       screen: ResultScreen,
       navigationOptions: {
-        title: 'Kết Quả',
+        header: null,
       }
     },
     ShortenSkillTest: {
@@ -65,7 +65,7 @@ const RoutePage = createStackNavigator(
     FailResult: {
       screen: FailResultScreen,
       navigationOptions: {
-        title: 'Kết Quả',
+        header: null,
       }
     },
     FailSST: {

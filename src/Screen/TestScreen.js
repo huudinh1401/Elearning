@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, StyleSheet} from 'react-native';
 import Test from '../Components/Test';
 
-const stt = 1;
 export default class Exercise extends Component {
   
 
@@ -20,8 +19,7 @@ export default class Exercise extends Component {
           title = { titleName }
           Title = { TitleName }
           level = { titleLevel }
-          img = { titleImage }
-          stt = { stt } 
+          img = { titleImage } 
         />
       </View>
     );

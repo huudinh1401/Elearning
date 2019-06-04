@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { fetchError, fetchSuccess, isChoosingA, isChoosingB, isChoosingC, isChoosingD, isCheckingTrue, isCheckingFalse, isContinue } from '../redux/actionCreators';
+import { isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3 } from '../redux/actionCreators';
 
 class ButtonCheck extends Component {
     onPressChecking = () => {
-        const { Choosed, answer } = this.props;
+        const { Choosed, answer, stt } = this.props;
         
         if (Choosed === answer){
           this.props.isCheckingTrue();
-          
+          if (stt == 1) this.props.isScore1();
+          else if (stt==2) this.props.isScore2();
+          else this.props.isScore3();
         }
         else {
           this.props.isCheckingFalse(answer);
@@ -48,23 +50,25 @@ const styles = StyleSheet.create({
         marginTop: 50 * ratio(height),
     },
     buttonCheckDisabled: {
-    borderRadius: 5 * ratio(height),
-    alignItems: 'center',
-    backgroundColor:'#999',
-    marginHorizontal: 30 * ratio(height),
-    marginTop: 50 * ratio(height),
+      borderRadius: 5 * ratio(height),
+      alignItems: 'center',
+      backgroundColor:'#999',
+      marginHorizontal: 30 * ratio(height),
+      marginTop: 50 * ratio(height),
     },
 });
 function mapStateToProps(state) {
     return {
-      dataSource: state.dataSource,
-      error: state.error,
       Choosed: state.Choosed,
       Checking: state.Checking,
+      Score: state.Score,
+      Score1: state.Score1,
+      Score2: state.Score2,
+      Score3: state.Score3,
       textAnswer: state.textAnswer,
       textTitle: state.textTitle,
       backgroundColorChecking: state.backgroundColorChecking
     };
   }
   
-  export default connect(mapStateToProps, { fetchSuccess, fetchError, isChoosingA, isChoosingB, isChoosingC, isChoosingD, isCheckingTrue, isCheckingFalse, isContinue })(ButtonCheck);
+  export default connect(mapStateToProps, {isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3})(ButtonCheck);

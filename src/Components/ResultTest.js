@@ -11,10 +11,11 @@ export default class Result extends Component {
 
     return (
         <View style={styles.container}>
+          <View style={styles.header}>
+                <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Kết Quả </Text>
+          </View>
           <View style={{ flex: 1, justifyContent:'center', alignItems: 'center',}}>
-            
             <Text style={styles.textTop}>Bài học kết thúc! </Text>
-            
           </View>
 
           <View style={{flex: 4,}}>
@@ -58,6 +59,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  header:{
+    flexDirection:'row',
+    justifyContent: 'space-around',
+    backgroundColor:'#339966',
+    height: 55 * ratio(height),
+    paddingTop: 15* ratio(height),
+  },
   textTop: {
     color: '#0066FF',
     fontWeight: 'bold',
@@ -66,7 +74,7 @@ const styles = StyleSheet.create({
   buttonContinue: {
     borderRadius: 5 * ratio(height),
     alignItems: 'center',
-    backgroundColor:'#330099',
+    backgroundColor:'green',
     margin: 30 * ratio(height)
   },
   ImgTheme: {
@@ -81,13 +89,13 @@ const styles = StyleSheet.create({
     marginTop: 10 * ratio(height)
   },
   textTheme: {
-    color: '#663300',
+    color: 'green',
     fontWeight: 'bold',
     fontSize: 18 * ratio(height), 
     marginTop: 10 * ratio(height),
   },
   textResult: {
-    color: '#003300',
+    color: 'green',
     fontWeight: 'bold',
     fontSize: 14 * ratio(height),
     marginTop: 20 * ratio(height),

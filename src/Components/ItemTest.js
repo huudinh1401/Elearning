@@ -10,25 +10,14 @@ class ItemTest extends Component {
     
     onPressChoosing = (item, answer)=>{
 
-        Alert.alert(
-            'Câu trả lời cuối cùng của bạn là?', 'Đáp án: ' + item ,
-            [
-                { text: 'Hủy Bỏ', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                { text: 'OK', onPress: () => {
-                                                
-                                                if(item === 'A')
-                                                    this.props.isChoosingA(answer)
-                                                else if (item === 'B')
-                                                    this.props.isChoosingB(answer)
-                                                else if (item === 'C')
-                                                    this.props.isChoosingC(answer)
-                                                else this.props.isChoosingD(answer)
-                                            }
-                },
-            ],
-            {cancelable: false},
-        )
-        
+      if(item === 'A')
+        this.props.isChoosingA(answer)
+      else if (item === 'B')
+          this.props.isChoosingB(answer)
+      else if (item === 'C')
+          this.props.isChoosingC(answer)
+      else this.props.isChoosingD(answer)
+            
     }
     getBackgroundChoosing(isChoosing){
         if (isChoosing)

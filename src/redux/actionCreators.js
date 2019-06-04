@@ -47,6 +47,27 @@ export function isCheckingFalse(textAnswer) {
         textAnswer
     };
 }
+export function isScore1() {
+    return { 
+        type: 'IS_SCORE_1',
+    };
+}
+export function isScore2() {
+    return { 
+        type: 'IS_SCORE_2',
+    };
+}
+export function isScore3() {
+    return { 
+        type: 'IS_SCORE_3',
+    };
+}
+export function isScore() {
+    return { 
+        type: 'IS_SCORE',
+
+    };
+}
 export function isContinue() {
     return { 
         type: 'IS_CONTINUE',
