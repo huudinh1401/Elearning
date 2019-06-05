@@ -1,10 +1,10 @@
 
   
 import React, { Component } from 'react';
-import { ActivityIndicator, Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { connect } from 'react-redux'
+import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 import getContent from '../data/getContent';
-import { fetchError, fetchSuccess, isChoosingA, isChoosingB, isChoosingC, isChoosingD, isCheckingTrue, isCheckingFalse, isContinue, isScore } from '../redux/actionCreators';
+import { fetchError, fetchSuccess ,isContinue, getLevelCB1 } from '../redux/actionCreators';
 import ItemTest from './ItemTest';
 import Form from './Form';
 import ButtonCheck from './ButtonCheck';
@@ -14,83 +14,70 @@ import ProgressBar from './ProgressBar';
 
 
 class Test extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      isLoading: true,
-    }
-  }
-  //this.onPressContinue(title,level, img, Title, stt)
+ 
   componentDidMount(){
-    const { Title, level, stt } = this.props;
+    const { Title, Level, stt } = this.props;
 
-    getContent(Title, level, stt)
+    getContent(Title, this.getLevelText(Level), stt)
     .then((dataSource) => {
       this.props.fetchSuccess(dataSource);
-      this.setState({
-        isLoading: false
-      });
     })
     .catch(()=>this.props.fetchError())
   }
+  getLevelText(item){
+    if (item == 0)
+      return 'Easy';
+    else if (item == 1)
+          return 'Medium';
+    else if (item == 2)
+          return 'Difficult';
+    else if (item == 3)
+          return 'Difficult';
+    return 'Difficult';
+  }
 
-
-  onPressContinue = (title, level, image, Title, stt) => {
-    const {Score1, Score2, Score3} = this.props;
-    this.props.isContinue();
+  onPressContinue = (title, Level, image, Title, stt) => {
     if (stt == 3){
-      if (Score1 && Score2 && Score3)
-        this.props.navigate ('Result', { title: title, Title: Title, level: level, img: image });
-      else  this.props.navigate ('FailResult', { title: title, Title: Title, level: level, img: image });
+      this.props.navigate ('Result', { title: title, Title: Title, Level: Level, img: image });
     }
     else {
       if (stt % 2 == 0)
-        this.props.navigate ('NextNext', { title: title, Title: Title, level: level, img: image, stt: stt});
-      else  this.props.navigate ('Next', { title: title, Title: Title, level: level, img: image, stt: stt});
+        this.props.navigate ('NextNext', { title: title, Title: Title, Level: Level, img: image, stt: stt});
+      else  this.props.navigate ('Next', { title: title, Title: Title, Level: Level, img: image, stt: stt});
     }
+    if (stt < 3)
+      this.props.isContinue();
   }
-  getProgressBar(){
-    const {stt} = this.props;
-    if (stt == 1){
-      ProgressBar1 = 'blue';
-      ProgressBar2 = '';
-      ProgressBar1 = '';
-
-    } else if (stt == 2 ){
-        
-    }
+  getProgressBar(item){
+    if (item == 1) return 'green';
+    else if (item == 2 ) return 'red';
+    else return '#DDDDDD';
   }
 
   render() {
-    if(this.state.isLoading){
-      return(
-        <View style={{flex: 3, padding: 50}}>
-          <ActivityIndicator/>
-        </View>
-      )
-    }
-
     const {textTitle, textAnswer, backgroundColorChecking} = this.props;
-    const { Title, level, img, title, stt } = this.props;
+    const { Title, Level, img, title, stt } = this.props;
     const { type, content, answerA, answerB, answerC, answerD, answer } = this.props.dataSource;
+    const { Score1, Score2, Score3 } = this.props;
 
     return (
       
       <ImageBackground source={require('../image/hoavan.jpg')} style={{width: '100%', height: '100%'}}>
 
         <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Bài Học</Text>
+          </View>
           <View style={{ flex: 2, justifyContent:'center' }}>
-            <View style={styles.header}>
-              <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Bài Học</Text>
-            </View>
+            
             <View style={styles.styleTheme}>
               <Text style={styles.textTheme}>Chủ Đề: {title}</Text>
             </View>
 
             <View style={styles.styleProgressBar}>
-              <ProgressBar backgroundColor = 'green'/>
-              <ProgressBar backgroundColor = 'red'/>
-              <ProgressBar backgroundColor = 'blue'/> 
+              <ProgressBar backgroundColor = { this.getProgressBar(Score1) }/>
+              <ProgressBar backgroundColor = { this.getProgressBar(Score2) }/>
+              <ProgressBar backgroundColor = { this.getProgressBar(Score3) }/> 
             </View>
           </View>
 
@@ -108,7 +95,7 @@ class Test extends Component {
             <View > 
               {
                 this.props.Checking? 
-                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,level, img, Title, stt)}>  
+                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,Level, img, Title, stt)}>  
                     <Text style={styles.textContinueButton}> Tiếp Tục </Text>
                 </TouchableOpacity> : <ButtonCheck stt = {stt} answer = {answer} Choosed = {this.props.Choosed}/>
               } 
@@ -143,7 +130,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'center',
     marginHorizontal: 70 * ratio(height),
-    backgroundColor: '#999',
+    backgroundColor: '#DDDDDD',
     height: 10 * ratio(height),
     borderRadius: 5 * ratio(height),
   },
@@ -169,7 +156,7 @@ const styles = StyleSheet.create({
     marginBottom: 5 * ratio(height),
     borderRadius: 5 * ratio(height),
     marginHorizontal: 30 * ratio(height),
-    marginTop: 15 * ratio(height),
+    marginTop: 10 * ratio(height),
   },
   textTheme: {
     fontSize: 16 * ratio(height),
@@ -198,12 +185,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { fetchSuccess, 
-                                          fetchError, 
-                                          isChoosingA, 
-                                          isChoosingB, 
-                                          isChoosingC, 
-                                          isChoosingD,
-                                          isScore,
-                                          isCheckingTrue, 
-                                          isCheckingFalse, 
-                                          isContinue })(Test);
+                                          fetchError,
+                                          isContinue, getLevelCB1 })(Test);

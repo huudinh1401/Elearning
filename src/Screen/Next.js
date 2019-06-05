@@ -10,7 +10,7 @@ export default class Next extends Component {
     const { navigate } = this.props.navigation;
     const titleName = this.props.navigation.getParam ('title', 'No_Name');
     const TitleName = this.props.navigation.getParam ('Title', 'No_Name');
-    const titleLevel = this.props.navigation.getParam ('level', 'No_Name');
+    const titleLevel = this.props.navigation.getParam ('Level', 'No_Name');
     const titleImage = this.props.navigation.getParam ('img', 'No_Name');
     const stt = this.props.navigation.getParam ('stt', 'No_Name');
 
@@ -20,7 +20,7 @@ export default class Next extends Component {
           navigate = { navigate }
           title = { titleName }
           Title = { TitleName }
-          level = { titleLevel }
+          Level = { titleLevel }
           img = { titleImage }
           stt = { stt } 
         />

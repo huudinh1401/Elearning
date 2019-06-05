@@ -4,22 +4,22 @@ import { connect } from 'react-redux';
 import { fetchError, fetchSuccess, isChoosingA, isChoosingB, isChoosingC, isChoosingD, isCheckingTrue, isCheckingFalse, isContinue } from '../redux/actionCreators';
 
 class ButtonContinue extends Component {
-    onPressContinue = (title, level, image, Title, stt) => {
+    onPressContinue = (title, Level, image, Title, stt) => {
         this.props.isContinue();
         if (stt == 3)
-          this.props.navigate ('Result', { title: title, Title: Title, level: level, img: image });
+          this.props.navigate ('Result', { title: title, Title: Title, Level: Level, img: image });
         else {
           if (stt % 2 == 0)
-            this.props.navigate ('NextNext', { title: title, Title: Title, level: level, img: image, stt: stt + 1 });
-          else  this.props.navigate ('Next', { title: title, Title: Title, level: level, img: image, stt: stt + 1 });
+            this.props.navigate ('NextNext', { title: title, Title: Title, Level: Level, img: image, stt: stt + 1 });
+          else  this.props.navigate ('Next', { title: title, Title: Title, Level: Level, img: image, stt: stt + 1 });
         }
     }
 
     render() {
-        const { Title, level, img, title, stt } = this.props;
+        const { Title, Level, img, title, stt } = this.props;
         return (
             
-                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,level, img, Title, stt)}>  
+                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,Level, img, Title, stt)}>  
                     <Text style={{ padding: 5 * ratio(height), textDecorationLine: 'underline',fontWeight: 'bold', fontSize: 18 * ratio(height), color:'#FFFFFF' }}>Tiếp Tục</Text>
                 </TouchableOpacity>
             

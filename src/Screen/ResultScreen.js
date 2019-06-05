@@ -10,13 +10,13 @@ export default class Result extends Component {
   render() {
     const { navigate } = this.props.navigation;
     const titleName = this.props.navigation.getParam ('title', 'No_Name');
-    const level = this.props.navigation.getParam ('level', 'Trung Bình');
+    const Level = this.props.navigation.getParam ('Level', 'No_Name');
     const image = this.props.navigation.getParam ('img', 'No_Name');
     return (
         <View style={styles.container}>
           <ResultTest
             navigate = { navigate }
-            level = { level }
+            Level = { Level }
             title = { titleName }
             image = { image }
           />

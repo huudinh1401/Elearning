@@ -20,7 +20,6 @@ export default class ShortenSkillTest extends Component {
           navigate = { navigate }
           title = { titleName }
           Title = { TitleName }
-
           nextScreen = { resultScreen }
         />
       </View>

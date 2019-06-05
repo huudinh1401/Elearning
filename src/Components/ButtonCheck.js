@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3 } from '../redux/actionCreators';
+import { isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3, isScore } from '../redux/actionCreators';
 
 class ButtonCheck extends Component {
     onPressChecking = () => {
         const { Choosed, answer, stt } = this.props;
         
         if (Choosed === answer){
+          this.props.isScore();
           this.props.isCheckingTrue();
-          if (stt == 1) this.props.isScore1();
-          else if (stt==2) this.props.isScore2();
-          else this.props.isScore3();
+          if (stt == 1) this.props.isScore1(1);
+          else if (stt == 2) this.props.isScore2(1);
+          else if (stt == 3) this.props.isScore3(1);
         }
         else {
           this.props.isCheckingFalse(answer);
+          if(stt == 1) this.props.isScore1(2);
+          else if (stt == 2) this.props.isScore2(2);
+          else if (stt == 3) this.props.isScore3(2);
         }
     }
     disabledTouchCheckButton(){
@@ -71,4 +75,4 @@ function mapStateToProps(state) {
     };
   }
   
-  export default connect(mapStateToProps, {isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3})(ButtonCheck);
+  export default connect(mapStateToProps, {isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3, isScore})(ButtonCheck);

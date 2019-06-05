@@ -91,9 +91,9 @@ const styles = StyleSheet.create({
 
   styleQuestion: {
     backgroundColor:'#DDDDDD',
-    marginBottom: 40 * ratio(height),
+    marginBottom: 30 * ratio(height),
     marginHorizontal: 30 * ratio(height),
-    marginTop: 25 * ratio(height),
+    marginTop: 10 * ratio(height),
   },
 });
 function mapStateToProps(state) {

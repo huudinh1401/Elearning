@@ -5,8 +5,7 @@ import TestScreen from './src/Screen/TestScreen';
 import ResultScreen from './src/Screen/ResultScreen';
 import ShortenSkillTestScreen from './src/Screen/ShortenSkillTestScreen';
 import ShortenSkillResultScreen from './src/Screen/ShortenSkillResultScreen';
-import FailResultScreen from './src/Screen/FailResultScreen';
-import FailSSTScreen from './src/Screen/FailSSTScreen';
+
 import Next from './src/Screen/Next';
 import NextNext from './src/Screen/NextNext';
 
@@ -53,27 +52,16 @@ const RoutePage = createStackNavigator(
     ShortenSkillTest: {
       screen: ShortenSkillTestScreen,
       navigationOptions: {
-        title: 'Kiểm Tra Rút Ngắn Kỹ Năng',
+        header: null,
       }
     },
     ShortenSkillResult: {
       screen: ShortenSkillResultScreen,
       navigationOptions: {
-        title: 'Shorten Skill Result',
-      }
-    },
-    FailResult: {
-      screen: FailResultScreen,
-      navigationOptions: {
         header: null,
       }
     },
-    FailSST: {
-      screen: FailSSTScreen,
-      navigationOptions: {
-        title: 'Shorten Skill Result',
-      }
-    },
+    
   },
   {
     initialRouteName: 'Home',

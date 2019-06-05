@@ -9,7 +9,7 @@ export default class Exercise extends Component {
     const { navigate } = this.props.navigation;
     const titleName = this.props.navigation.getParam ('title', 'No_Name');
     const TitleName = this.props.navigation.getParam ('Title', 'No_Name');
-    const titleLevel = this.props.navigation.getParam ('level', 'No_Name');
+    const titleLevel = this.props.navigation.getParam ('Level', 'No_Name');
     const titleImage = this.props.navigation.getParam ('img', 'No_Name');
 
     return (
@@ -18,7 +18,7 @@ export default class Exercise extends Component {
           navigate = { navigate }
           title = { titleName }
           Title = { TitleName }
-          level = { titleLevel }
+          Level = { titleLevel }
           img = { titleImage } 
         />
       </View>

@@ -1,88 +1,96 @@
 
   
 import React, { Component } from 'react';
-import { Alert, Text, View, ImageBackground, StyleSheet, TouchableOpacity, Dimensions, ActivityIndicator} from 'react-native';
+import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 import getContentShorten from '../data/getContentShorten';
+import { fetchError, fetchSuccess ,isContinue  } from '../redux/actionCreators';
+import ItemTest from './ItemTest';
+import Form from './Form';
+import ButtonCheck from './ButtonCheck';
+import ProgressBar from './ProgressBar';
 
 
-export default class ShortenTest extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      isLoading: true,
-    }
-  }
 
+
+class ShortenTest extends Component {
+ 
   componentDidMount(){
-    getContentShorten('RutGon3', '1')
-    .then((dataSource) => {
-      this.setState({
-        isLoading: false,
-        dataSource: dataSource
-      }, function(){
+    const { Title, stt } = this.props;
 
-      });
+    getContentShorten(Title, stt)
+    .then((dataSource) => {
+      this.props.fetchSuccess(dataSource);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch(()=>this.props.fetchError())
   }
-  
-  
-  render() {
-    const {title, level} = this.props;
-    
-    if(this.state.isLoading){
-      return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
-        </View>
-      )
+
+
+  onPressContinue = (title, Title) => {
+    const {stt} = this.props;
+    if (stt == 3){
+      this.props.navigate ('ShortenSkillResult', { title: title, Title: Title });
     }
+    else {
+      if (stt % 2 == 0)
+        this.props.navigate ('ShortenTest', { title: title, Title: Title});
+      else  this.props.navigate ('ShortenTest', { title: title, Title: Title});
+    }
+    if (stt < 3)
+      this.props.isContinue();
+  }
+  getProgressBar(item){
+    if (item == 1) return 'green';
+    else if (item == 2 ) return 'red';
+    else return '#999';
+  }
+
+  render() {
+    const {textTitle, textAnswer, backgroundColorChecking} = this.props;
+    const { Title, title, stt } = this.props;
+    const { type, content, answerA, answerB, answerC, answerD, answer } = this.props.dataSource;
+    const { Score1, Score2, Score3 } = this.props;
+
     return (
+      
       <ImageBackground source={require('../image/hoavan.jpg')} style={{width: '100%', height: '100%'}}>
+
         <View style={styles.container}>
-          <View style={{ flex: 1, justifyContent:'center'}}>
+          <View style={styles.header}>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Kiểm Tra Rút Ngắn Kỹ Năng</Text>
+          </View>
+          <View style={{ flex: 2, justifyContent:'center' }}>
+            
             <View style={styles.styleTheme}>
-              <Text style={styles.textTheme}>Chủ Đề:</Text>
-              <Text style={styles.textTheme}>{title}</Text>
-              
+              <Text style={styles.textTheme}>Chủ Đề: {title}</Text>
             </View>
 
-            <View style={{ flexDirection:'row', justifyContent:'center'}}>
-              <Text style={styles.textTop}>Bạn đã hoàn thành: </Text>
-              <Text style={styles.textTop}>1/3</Text>
+            <View style={styles.styleProgressBar}>
+              <ProgressBar backgroundColor = { this.getProgressBar(Score1) }/>
+              <ProgressBar backgroundColor = { this.getProgressBar(Score2) }/>
+              <ProgressBar backgroundColor = { this.getProgressBar(Score3) }/> 
             </View>
           </View>
 
           <View style={{flex: 4 }}>
-            <View style={styles.styleQuestion}>
-              <Text style={{ padding: 5 * ratio(height), fontWeight: 'bold', fontSize:  16 * ratio(height), color:'#000' }}>{this.state.dataSource.type}</Text>
-              <Text style={{ paddingRight: 5 * ratio(height), paddingLeft: 5 * ratio(height), paddingBottom: 5 * ratio(height), fontSize: 16 * ratio(height), color:'#000' }}>{this.state.dataSource.content}</Text>
-            </View>
-            
-            <TouchableOpacity style={styles.buttonChoose} onPress={() => { Alert.alert('Bạn Chọn A')}}>  
-                <Text style={{ padding: 5 * ratio(height), fontSize: 14 * ratio(height), color:'#000' }}>{this.state.dataSource.answerA}</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonChoose} onPress={() => { Alert.alert('Bạn Chọn B')}}>  
-                <Text style={{ padding: 5 * ratio(height), fontSize: 14 * ratio(height), color:'#000' }}>{this.state.dataSource.answerB}</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonChoose} onPress={() => { Alert.alert('Bạn Chọn C')}}>  
-                <Text style={{ padding: 5 * ratio(height), fontSize: 14 * ratio(height), color:'#000' }}>{this.state.dataSource.answerC}</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonChoose} onPress={() => { Alert.alert('Bạn Chọn D')}}>  
-                <Text style={{ padding: 5 * ratio(height), fontSize: 14 * ratio(height), color:'#000' }}>{this.state.dataSource.answerD}</Text>
-            </TouchableOpacity>
-           
+           <ItemTest
+            type = {type}   content = {content} answer = {answer} stt = {stt}
+            answerA = {answerA} answerB ={answerB} answerC = {answerC} answerD = {answerD}
+           />
           </View>
             
-          <View style={{flex: 1 }}>
-            <TouchableOpacity style={styles.buttonCheck} onPress={() => this.props.navigate('Test',{title: this.props.title, img: this.props.img})}>  
-                <Text style={{ padding: 5 * ratio(height), fontWeight: 'bold', fontSize: 17 * ratio(height), color:'#FFFFFF' }}>Kiểm Tra</Text>
-            </TouchableOpacity>
+          <View style={{flex: 2, marginTop: 70 * ratio(height), backgroundColor: backgroundColorChecking}}>
+            <View style={{marginTop: 20 * ratio(height)}}>
+              { this.props.Checking? <Form textTitle = { textTitle } textAnswer = { textAnswer }/>: null}
+            </View>
+            <View > 
+              {
+                this.props.Checking? 
+                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title, Title)}>  
+                    <Text style={styles.textContinueButton}> Tiếp Tục </Text>
+                </TouchableOpacity> : <ButtonCheck stt = {stt} answer = {answer} Choosed = {this.props.Choosed}/>
+              } 
+              </View>
           </View>
           
         </View>
@@ -101,28 +109,45 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  buttonCheck: {
+  header:{
+    flexDirection:'row',
+    justifyContent: 'space-around',
+    backgroundColor:'#339966',
+    height: 55 * ratio(height),
+    paddingTop: 15* ratio(height),
+  },
+
+  styleProgressBar:{ 
+    flexDirection:'row',
+    justifyContent:'center',
+    marginHorizontal: 70 * ratio(height),
+    backgroundColor: '#999',
+    height: 10 * ratio(height),
+    borderRadius: 5 * ratio(height),
+  },
+
+  buttonContinue: {
     borderRadius: 5 * ratio(height),
     alignItems: 'center',
-    backgroundColor:'#330099',
-    margin: 30 * ratio(height),
+    backgroundColor:'green',
+    marginHorizontal: 30 * ratio(height),
+    marginTop: 10 * ratio(height),
   },
-  buttonChoose: {
-    borderRadius: 5 * ratio(height),
-    backgroundColor:'#999',
-    marginLeft: 30 * ratio(height),
-    marginRight: 30 * ratio(height),
-    marginBottom: 20 * ratio(height),
-  },
+  textContinueButton: { 
+    padding: 5 * ratio(height), 
+    textDecorationLine: 'underline',
+    fontWeight: 'bold', 
+    fontSize: 18 * ratio(height), 
+    color:'#FFFFFF' },
+
   styleTheme: {
     backgroundColor:'#FFFFCC',
     flexDirection:'row',
     justifyContent:'center',
     marginBottom: 5 * ratio(height),
     borderRadius: 5 * ratio(height),
-    marginLeft: 30 * ratio(height),
-    marginRight: 30 * ratio(height),
-    marginTop: 15 * ratio(height),
+    marginHorizontal: 30 * ratio(height),
+    marginTop: 10 * ratio(height),
   },
   textTheme: {
     fontSize: 16 * ratio(height),
@@ -130,16 +155,26 @@ const styles = StyleSheet.create({
     color: '#880000',
     padding: 5 * ratio(height),
   },
-  textTop: {
-    fontSize: 16 * ratio(height),
-    fontWeight: 'bold',
-    color: '#993366',
-  },
-  styleQuestion: {
-    backgroundColor:'#DDDDDD',
-    marginBottom: 40 * ratio(height),
-    marginLeft: 30 * ratio(height),
-    marginRight: 30 * ratio(height),
-    marginTop: 5 * ratio(height),
-  },
+  
 });
+
+function mapStateToProps(state) {
+  return {
+    dataSource: state.dataSource,
+    error: state.error,
+    stt: state.stt,
+    Choosed: state.Choosed,
+    Checking: state.Checking,
+    textAnswer: state.textAnswer,
+    textTitle: state.textTitle,
+    backgroundColorChecking: state.backgroundColorChecking,
+    Score1: state.Score1,
+    Score2: state.Score2,
+    Score3: state.Score3,
+    Score: state.Score,
+  };
+}
+
+export default connect(mapStateToProps, { fetchSuccess, 
+                                          fetchError,
+                                          isContinue })(ShortenTest);

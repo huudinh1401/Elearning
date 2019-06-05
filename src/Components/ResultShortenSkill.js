@@ -22,7 +22,7 @@ export default class ShortenSkillResult extends Component {
               </View>
               <View style={{ justifyContent:'center', alignItems:'center', }}>
                 <Text style={styles.textResult}>Bạn Đã Hoàn Thành </Text>
-                <Text style={styles.textResult}> { this.props.level } </Text>
+                <Text style={styles.textResult}> { this.props.Level } </Text>
                 <Text style={styles.textResult}> Chủ đề tiếp theo đã được mở! </Text>
               </View>
               
