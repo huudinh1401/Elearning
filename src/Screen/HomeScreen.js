@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getLevelCB1, getLevelCB2 ,getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelRutGon3, LevelRutGon6, LevelRutGon9, LevelSoNhieu, LevelThoiGian} from '../redux/actionCreators';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import ItemTitle from '../Components/ItemTitle';
-
+import GroupTitle from '../Components/GroupTitle';
 
 class ElearningApp extends Component {
-
 
   getTitle(item){
     const { arrTitles } = this.props;
@@ -23,62 +21,71 @@ class ElearningApp extends Component {
   // componentDidMount(){
   //   const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelSoNhieu, levelMauSac, levelGiaDinh, levelThoiGian} = this.props;
   //   const { levelRutGon3, levelRutGon6, levelRutGon9 } = this.props;
-    
-    
-  //     if (levelCB1 == 3){
-  //       this.props.getLevelCB2();
-  //       this.props.getLevelCumTu();
+
+  //     if (levelCB1 == 3 || levelRutGon3 == 1){
+  //       if (levelCB2 == -1) this.props.getLevelCB2();
+  //       if (levelCumTu == -1)this.props.getLevelCumTu();
   //     }
-  //     if (levelCumTu == 3){
+  //     if (levelCumTu == 3 && levelDongVat ==- 1){
   //       this.props.LevelDongVat();
   //     }
   //     if (levelDongVat == 3){
-  //       this.props.LevelQuanAo();
-  //       this.props.LevelSoNhieu();
+  //       if (levelQuanAo == -1) this.props.LevelQuanAo();
+  //       if (levelSoNhieu == -1)this.props.LevelSoNhieu();
   //     }
-  //     if (levelSoNhieu == 3){
+  //     if (levelSoNhieu == 3 && levelMauSac == -1){
   //       this.props.LevelMauSac();
   //     }
   //     if (levelMauSac == 3){
-  //       this.props.LevelGiaDinh();
-  //       this.props.LevelThoiGian();
+  //       if (levelGiaDinh == -1) this.props.LevelGiaDinh();
+  //       if (levelThoiGian == -1)this.props.LevelThoiGian();
   //     }
-    
-  //}
-  
-   
-   
-  
 
+  //     if (levelRutGon3 == 1 || levelRutGon6 == 1 || levelRutGon9 == 1){
+  //       if (levelCB2 == -1) this.props.getLevelCB2();
+  //       if (levelCumTu == -1)this.props.getLevelCumTu();
+  //     }
+  //     if (levelRutGon6 == 1 || levelRutGon9 == 1){
+  //       if (levelDongVat == -1) this.props.LevelDongVat();
+  //       if (levelQuanAo == -1) this.props.LevelQuanAo();
+  //       if (levelSoNhieu == -1)this.props.LevelSoNhieu();
+  //     }
+  //     if (levelRutGon9 == 1){
+  //       if (levelMauSac == -1)this.props.LevelMauSac();
+  //       if (levelGiaDinh == -1) this.props.LevelGiaDinh();
+  //       if (levelThoiGian == -1)this.props.LevelThoiGian();
+  //     }
+  // }
+  
   render() {
     const { navigate } = this.props.navigation;
-    const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelSoNhieu, levelMauSac, levelGiaDinh, levelThoiGian } = this.props;
+    const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelSoNhieu, levelMauSac, levelGiaDinh, levelThoiGian, levelRutGon3, levelRutGon6, levelRutGon9 } = this.props;
     return (
       <View style = {styles.content}>
         <ScrollView>
          
-          <ItemTitle 
+          <GroupTitle 
             navigate = { navigate }
             item1 = { this.gettitle(0) }  Item1 = { this.getTitle(0) } Level1 = {levelCB1}  image1 = {require('../image/egg.png')}
             item2 = { this.gettitle(1) }  Item2 = { this.getTitle(1) } Level2 = {levelCB2} image2 = {require('../image/eggcb2_2.png')} 
             item3 = { this.gettitle(2) }  Item3 = { this.getTitle(2) } Level3 = {levelCumTu} image3 = {require('../image/cumtu_1.png')}
-            itemTest = { this.gettitle(3) } ItemTest = { this.getTitle(3) }
+            itemTest = { this.gettitle(3) } ItemTest = { this.getTitle(3) } Level4 = {levelRutGon3}
           />
 
-          <ItemTitle 
+          <GroupTitle 
             navigate = { navigate }
             item1 = { this.gettitle(4) }  Item1 = { this.getTitle(4) } Level1 = {levelDongVat} image1 = {require('../image/animal_1.png')}
             item2 = { this.gettitle(5) }  Item2 = { this.getTitle(5) } Level2 = {levelQuanAo} image2 = {require('../image/clothe_1.png')} 
             item3 = { this.gettitle(6) }  Item3 = { this.getTitle(6) } Level3 = {levelSoNhieu} image3 = {require('../image/flower_1.png')}
-            itemTest = { this.gettitle(7) } ItemTest = { this.getTitle(7) }
+            itemTest = { this.gettitle(7) } ItemTest = { this.getTitle(7)}  Level4 = {levelRutGon6}
           />
 
-          <ItemTitle 
+          <GroupTitle 
             navigate = { navigate }
             item1 = { this.gettitle(8) }  Item1 = { this.getTitle(8) }  Level1 = {levelMauSac}  image1 = {require('../image/color_1.png')}
             item2 = { this.gettitle(9) }  Item2 = { this.getTitle(9) }  Level2 = {levelGiaDinh} image2 = {require('../image/family_1.png')} 
             item3 = { this.gettitle(10) } Item3 = { this.getTitle(10) } Level3 = {levelThoiGian} image3 = {require('../image/watch_1.png')}
-            itemTest = { this.gettitle(11) } ItemTest = { this.getTitle(11) }
+            itemTest = { this.gettitle(11) } ItemTest = { this.getTitle(11) } Level4 = {levelRutGon9}
           />
           </ScrollView>
         
@@ -104,11 +111,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {
-                                          getLevelCB1, getLevelCB2 , getLevelCumTu, LevelDongVat, 
-                                          LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelRutGon3, 
-                                          LevelRutGon6, LevelRutGon9, LevelSoNhieu, LevelThoiGian
-                                        })(ElearningApp);
+export default connect(mapStateToProps)(ElearningApp);
 
 const styles = StyleSheet.create({
   content: {

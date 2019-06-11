@@ -4,14 +4,11 @@ import React, { Component } from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import getContent from '../data/getContent';
-import { fetchError, fetchSuccess ,isContinue, getLevelCB1 } from '../redux/actionCreators';
+import { fetchError, fetchSuccess ,isContinue, getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian } from '../redux/actionCreators';
 import ItemTest from './ItemTest';
 import Form from './Form';
 import ButtonCheck from './ButtonCheck';
 import ProgressBar from './ProgressBar';
-
-
-
 
 class Test extends Component {
  
@@ -25,25 +22,37 @@ class Test extends Component {
     .catch(()=>this.props.fetchError())
   }
   getLevelText(item){
-    if (item == 0)
-      return 'Easy';
-    else if (item == 1)
-          return 'Medium';
-    else if (item == 2)
-          return 'Difficult';
-    else if (item == 3)
-          return 'Difficult';
+    if (item == 0) return 'Easy';
+    else if (item == 1) return 'Medium';
     return 'Difficult';
   }
+  setLevelTitle(){
+    const {title, Score, Level} = this.props;
+    if (Score == 3 && Level < 3){
+      switch (title){
+        case "Cơ Bản 1": return this.props.getLevelCB1();
+        case "Cơ Bản 2": return this.props.getLevelCB2();
+        case "Cụm Từ": return this.props.getLevelCumTu();
+        case "Động Vật": return this.props.LevelDongVat();
+        case "Quần Áo": return this.props.LevelQuanAo();
+        case "Số Nhiều": return this.props.LevelSoNhieu();
+        case "Màu Sắc": return this.props.LevelMauSac();
+        case "Gia Đình": return this.props.LevelGiaDinh();
+        case "Thời Gian": return this.props.LevelThoiGian();
+        default: break;
+      }
+    }    
+  };
 
   onPressContinue = (title, Level, image, Title, stt) => {
     if (stt == 3){
+      this.setLevelTitle();
       this.props.navigate ('Result', { title: title, Title: Title, Level: Level, img: image });
     }
     else {
       if (stt % 2 == 0)
-        this.props.navigate ('NextNext', { title: title, Title: Title, Level: Level, img: image, stt: stt});
-      else  this.props.navigate ('Next', { title: title, Title: Title, Level: Level, img: image, stt: stt});
+        this.props.navigate ('NextNext', { title: title, Title: Title, Level: Level, img: image});
+      else  this.props.navigate ('Next', { title: title, Title: Title, Level: Level, img: image});
     }
     if (stt < 3)
       this.props.isContinue();
@@ -68,8 +77,7 @@ class Test extends Component {
           <View style={styles.header}>
             <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Bài Học</Text>
           </View>
-          <View style={{ flex: 2, justifyContent:'center' }}>
-            
+          <View style={{ flex: 1, justifyContent:'center' }}>
             <View style={styles.styleTheme}>
               <Text style={styles.textTheme}>Chủ Đề: {title}</Text>
             </View>
@@ -92,19 +100,16 @@ class Test extends Component {
             <View style={{marginTop: 20 * ratio(height)}}>
               { this.props.Checking? <Form textTitle = { textTitle } textAnswer = { textAnswer }/>: null}
             </View>
-            <View > 
-              {
-                this.props.Checking? 
-                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,Level, img, Title, stt)}>  
-                    <Text style={styles.textContinueButton}> Tiếp Tục </Text>
-                </TouchableOpacity> : <ButtonCheck stt = {stt} answer = {answer} Choosed = {this.props.Choosed}/>
-              } 
-              </View>
+            <View >{
+                      this.props.Checking? 
+                      <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,Level, img, Title, stt)}>  
+                          <Text style={styles.textContinueButton}> Tiếp Tục </Text>
+                      </TouchableOpacity> : <ButtonCheck stt = {stt} answer = {answer} Choosed = {this.props.Choosed}/>
+                    } 
+            </View>
           </View>
-          
         </View>
       </ImageBackground>
-      
     );
   }
 }
@@ -138,7 +143,7 @@ const styles = StyleSheet.create({
   buttonContinue: {
     borderRadius: 5 * ratio(height),
     alignItems: 'center',
-    backgroundColor:'green',
+    backgroundColor:'blue',
     marginHorizontal: 30 * ratio(height),
     marginTop: 10 * ratio(height),
   },
@@ -184,6 +189,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchSuccess, 
-                                          fetchError,
-                                          isContinue, getLevelCB1 })(Test);
+export default connect(mapStateToProps, { fetchSuccess, fetchError, isContinue, 
+                                          getLevelCB1, getLevelCB2, getLevelCumTu, 
+                                          LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian })(Test);

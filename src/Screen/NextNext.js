@@ -12,7 +12,6 @@ export default class NextNext extends Component {
     const TitleName = this.props.navigation.getParam ('Title', 'No_Name');
     const titleLevel = this.props.navigation.getParam ('Level', 'No_Name');
     const titleImage = this.props.navigation.getParam ('img', 'No_Name');
-    const stt = this.props.navigation.getParam ('stt', 'No_Name');
 
 
     return (
@@ -23,7 +22,6 @@ export default class NextNext extends Component {
           Title = { TitleName }
           Level = { titleLevel }
           img = { titleImage }
-          stt = { stt } 
         />
       </View>
     );

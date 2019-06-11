@@ -14,13 +14,14 @@ export default class ShortenSkillTest extends Component {
     const { navigate } = this.props.navigation;
     const titleName = this.props.navigation.getParam ('title', 'No_Name');
     const TitleName = this.props.navigation.getParam ('Title', 'No_Name');
+    const titleLevel = this.props.navigation.getParam ('Level', 'No_Name');
     return (
       <View style = {styles.container}>
         <ShortenTest
           navigate = { navigate }
           title = { titleName }
           Title = { TitleName }
-          nextScreen = { resultScreen }
+          Level = { titleLevel }
         />
       </View>
     );

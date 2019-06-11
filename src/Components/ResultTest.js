@@ -2,34 +2,56 @@
   
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { isFinish, getLevelCB1, getLevelCB2, getLevelCumTu  } from '../redux/actionCreators';
+import { getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian } from '../redux/actionCreators';
 import { Image, Dimensions, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 
 class Result extends Component {
+  getLevelText(item){
+    if (item == 0) return 'Easy';
+    else if (item == 1) return 'Medium';
+    return 'Difficult';
+  }
+  
   onPress = () => {
-    this.props.isFinish();
+    const {levelCB1, levelCB2, levelCumTu, levelDongVat, levelGiaDinh, levelMauSac, Score} = this.props;
+    const {levelQuanAo, levelSoNhieu, levelThoiGian} = this.props;
+    
+   
+    if (Score == 3){
+      if (levelCB1 == 3){
+        if (levelCB2 == -1) this.props.getLevelCB2();
+        if (levelCumTu == -1)this.props.getLevelCumTu();
+      }
+      if (levelCumTu == 3 && levelDongVat == -1) this.props.LevelDongVat();
+      if (levelDongVat == 3){
+        if (levelQuanAo == -1) this.props.LevelQuanAo();
+        if (levelSoNhieu == -1)this.props.LevelSoNhieu();
+      }
+      if (levelSoNhieu == 3 && levelMauSac == -1) this.props.LevelMauSac();
+      if (levelMauSac == 3){
+        if (levelGiaDinh == -1) this.props.LevelGiaDinh();
+        if (levelThoiGian == -1)this.props.LevelThoiGian();
+      }
+    }
     this.props.navigate('Home');
+    
+      
+    //console.log(levelCB1);
+    
   }
   getImgFinish(){
-    const {Score, title, levelCB1} = this.props;
-    if (Score == 3){
-      if(title === "Cơ Bản 1")
-        this.props.getLevelCB1();
-      if (levelCB1 == 3){
-          this.props.getLevelCB2();
-          this.props.getLevelCumTu();
-      }
-      return require('../image/smile.jpg');
-    }
-      
-    return require('../image/cry.jpeg');
+    const {Score} = this.props;
+    if (Score != 3)
+      return require('../image/cry.jpeg');
+    else return require('../image/smile.jpg');
+    
   }
   getColor(){
     const {Score} = this.props;
-    if (Score == 3)
-      return 'green';
-    return 'red';
+    if (Score != 3)
+      return 'red';
+    return 'green';
   }
   getText(){
     const {Score} = this.props;
@@ -45,6 +67,7 @@ class Result extends Component {
   }
 
   render() {
+    const {Level, image, title} = this.props;
 
     return (
         <View style={styles.container}>
@@ -60,14 +83,14 @@ class Result extends Component {
               <View style={{ flexDirection:'row', justifyContent:'center'}}>
                 <View style={{ alignItems: 'center', padding: 2 * ratio(height), borderColor: this.getColor(), borderWidth:3 * ratio(height), borderRadius: 110 * ratio(height), width:110  * ratio(height), height:110 * ratio(height), }}>
                   <View style={{ alignItems: 'center', backgroundColor: '#CC33FF', borderRadius: 100 * ratio(height)}} >       
-                    <Image style={styles.ImgTheme} source={this.props.image}></Image>  
+                    <Image style={styles.ImgTheme} source={image}></Image>  
                   </View>
                 </View>
                 
               </View>
-              <Text style={{color: this.getColor(), fontWeight: 'bold', fontSize: 18 * ratio(height), marginTop: 10 * ratio(height) }}>{ this.props.title }</Text>
+              <Text style={{color: this.getColor(), fontWeight: 'bold', fontSize: 18 * ratio(height), marginTop: 10 * ratio(height) }}>{ title }</Text>
               <View style={{ flexDirection:'row', justifyContent:'center'}}>
-                <Text style={{ color: this.getColor(), fontWeight: 'bold', fontSize: 14 * ratio(height), marginTop: 20 * ratio(height)}}>{ this.getText() } { this.props.Level } </Text>
+                <Text style={{ color: this.getColor(), fontWeight: 'bold', fontSize: 14 * ratio(height), marginTop: 20 * ratio(height)}}>{ this.getText() } { this.getLevelText(Level) } </Text>
               </View>
               <Image style={this.getStyleImg()} source={this.getImgFinish()}></Image>
             </View>
@@ -129,6 +152,14 @@ function mapStateToProps(state) {
   return {
     Score: state.Score,
     levelCB1: state.levelCB1,
+    levelCB2: state.levelCB2,
+    levelCumTu: state.levelCumTu,
+    levelDongVat: state.levelDongVat, 
+    levelQuanAo: state.levelQuanAo, 
+    levelSoNhieu: state.levelSoNhieu,
+    levelMauSac: state.levelMauSac, 
+    levelGiaDinh: state.levelGiaDinh, 
+    levelThoiGian: state.levelThoiGian,
   };
 }
-export default connect(mapStateToProps, { isFinish, getLevelCB1, getLevelCB2, getLevelCumTu })(Result);
+export default connect(mapStateToProps, { getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian })(Result);

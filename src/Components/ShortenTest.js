@@ -4,12 +4,11 @@ import React, { Component } from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import getContentShorten from '../data/getContentShorten';
-import { fetchError, fetchSuccess ,isContinue  } from '../redux/actionCreators';
+import { fetchError, fetchSuccess ,isContinue, LevelRutGon3, LevelRutGon6, LevelRutGon9  } from '../redux/actionCreators';
 import ItemTest from './ItemTest';
 import Form from './Form';
 import ButtonCheck from './ButtonCheck';
 import ProgressBar from './ProgressBar';
-
 
 
 
@@ -24,17 +23,30 @@ class ShortenTest extends Component {
     })
     .catch(()=>this.props.fetchError())
   }
+  setLevelTitle(){
+    const {title, Score, Level} = this.props;
+    //console.log(Level);
+    if (Score == 3 && Level < 1){
+      switch (title){
+          case "Kiểm Tra Rút Ngắn 3 Kỹ Năng": return this.props.LevelRutGon3();
+          case "Kiểm Tra Rút Ngắn 6 Kỹ Năng": return this.props.LevelRutGon6();
+          case "Kiểm Tra Rút Ngắn 9 Kỹ Năng": return this.props.LevelRutGon9();
+          default: break;
+      }
+    }
+  };
 
-
-  onPressContinue = (title, Title) => {
+  onPressContinue = (title, Title, Level) => {
     const {stt} = this.props;
     if (stt == 3){
+      this.setLevelTitle();
       this.props.navigate ('ShortenSkillResult', { title: title, Title: Title });
     }
     else {
+      console.log(Level);
       if (stt % 2 == 0)
-        this.props.navigate ('ShortenTest', { title: title, Title: Title});
-      else  this.props.navigate ('ShortenTest', { title: title, Title: Title});
+        this.props.navigate ('Next1', { title: title, Title: Title, Level: Level});
+      else  this.props.navigate ('NextNext1', { title: title, Title: Title, Level: Level});
     }
     if (stt < 3)
       this.props.isContinue();
@@ -47,7 +59,7 @@ class ShortenTest extends Component {
 
   render() {
     const {textTitle, textAnswer, backgroundColorChecking} = this.props;
-    const { Title, title, stt } = this.props;
+    const { Title, title, stt, Level } = this.props;
     const { type, content, answerA, answerB, answerC, answerD, answer } = this.props.dataSource;
     const { Score1, Score2, Score3 } = this.props;
 
@@ -59,7 +71,7 @@ class ShortenTest extends Component {
           <View style={styles.header}>
             <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Kiểm Tra Rút Ngắn Kỹ Năng</Text>
           </View>
-          <View style={{ flex: 2, justifyContent:'center' }}>
+          <View style={{ flex: 1, justifyContent:'center' }}>
             
             <View style={styles.styleTheme}>
               <Text style={styles.textTheme}>Chủ Đề: {title}</Text>
@@ -86,7 +98,7 @@ class ShortenTest extends Component {
             <View > 
               {
                 this.props.Checking? 
-                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title, Title)}>  
+                <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title, Title, Level)}>  
                     <Text style={styles.textContinueButton}> Tiếp Tục </Text>
                 </TouchableOpacity> : <ButtonCheck stt = {stt} answer = {answer} Choosed = {this.props.Choosed}/>
               } 
@@ -129,7 +141,7 @@ const styles = StyleSheet.create({
   buttonContinue: {
     borderRadius: 5 * ratio(height),
     alignItems: 'center',
-    backgroundColor:'green',
+    backgroundColor:'blue',
     marginHorizontal: 30 * ratio(height),
     marginTop: 10 * ratio(height),
   },
@@ -150,7 +162,7 @@ const styles = StyleSheet.create({
     marginTop: 10 * ratio(height),
   },
   textTheme: {
-    fontSize: 16 * ratio(height),
+    fontSize: 14 * ratio(height),
     fontWeight: 'bold',
     color: '#880000',
     padding: 5 * ratio(height),
@@ -177,4 +189,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, { fetchSuccess, 
                                           fetchError,
-                                          isContinue })(ShortenTest);
+                                          isContinue, LevelRutGon3, LevelRutGon6, LevelRutGon9 })(ShortenTest);

@@ -11,11 +11,13 @@ export default class ShortenSkillResult extends Component {
   render() {
 
     const {navigate} = this.props.navigation;
-    const Level = this.props.navigation.getParam ('Level', 'Kiểm Tra Rút Gọn 3 Kỹ Năng');
+    const title = this.props.navigation.getParam ('title', 'Kiểm Tra Rút Gọn 3 Kỹ Năng');
+    const Title = this.props.navigation.getParam ('Title', 'Kiểm Tra Rút Gọn 3 Kỹ Năng');
     return (
         <View style={styles.container}>
           <ResultShortenSkill
-            Level = {Level}
+            title = {title}
+            Title = {Title}
             navigate = {navigate}
           />
           
