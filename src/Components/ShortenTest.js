@@ -1,7 +1,7 @@
 
   
 import React, { Component } from 'react';
-import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import getContentShorten from '../data/getContentShorten';
 import { fetchError, fetchSuccess ,isContinue, LevelRutGon3, LevelRutGon6, LevelRutGon9  } from '../redux/actionCreators';
@@ -69,7 +69,12 @@ class ShortenTest extends Component {
 
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Kiểm Tra Rút Ngắn Kỹ Năng</Text>
+            <Text style={{marginLeft: 15 * ratio(height)}}>  </Text>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 15 * ratio(height)}}> Kiểm tra rút ngắn kỹ năng</Text>
+            <TouchableOpacity onPress = {()=>this.props.navigate('Home')}>
+              <Image style={styles.imgExit} source={require('../image/exit1.png')}></Image>
+            </TouchableOpacity>
+            
           </View>
           <View style={{ flex: 1, justifyContent:'center' }}>
             
@@ -123,10 +128,16 @@ const styles = StyleSheet.create({
   },
   header:{
     flexDirection:'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     backgroundColor:'#339966',
     height: 55 * ratio(height),
     paddingTop: 15* ratio(height),
+  },
+  imgExit:{
+    width: 20 * ratio(height),
+    height: 20 * ratio(height),
+    marginTop: 2 * ratio(height),
+    marginRight: 8 * ratio(height)
   },
 
   styleProgressBar:{ 

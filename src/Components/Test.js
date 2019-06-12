@@ -1,7 +1,7 @@
 
   
 import React, { Component } from 'react';
-import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import getContent from '../data/getContent';
 import { fetchError, fetchSuccess ,isContinue, getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian } from '../redux/actionCreators';
@@ -75,7 +75,11 @@ class Test extends Component {
 
         <View style={styles.container}>
           <View style={styles.header}>
+            <Text style={{marginLeft: 10 * ratio(height)}}> </Text>
             <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18 * ratio(height)}}> Bài Học</Text>
+            <TouchableOpacity onPress = {()=>this.props.navigate('Home')}>
+              <Image style={styles.imgExit} source={require('../image/exit1.png')}></Image>
+            </TouchableOpacity>
           </View>
           <View style={{ flex: 1, justifyContent:'center' }}>
             <View style={styles.styleTheme}>
@@ -125,10 +129,16 @@ const styles = StyleSheet.create({
   },
   header:{
     flexDirection:'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     backgroundColor:'#339966',
     height: 55 * ratio(height),
     paddingTop: 15* ratio(height),
+  },
+  imgExit:{
+    width: 20 * ratio(height),
+    height: 20 * ratio(height),
+    marginTop: 4 * ratio(height),
+    marginRight: 5 * ratio(height)
   },
 
   styleProgressBar:{ 
@@ -137,7 +147,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 70 * ratio(height),
     backgroundColor: '#DDDDDD',
     height: 10 * ratio(height),
-    borderRadius: 5 * ratio(height),
+    borderRadius: 7 * ratio(height),
   },
 
   buttonContinue: {

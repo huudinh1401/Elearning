@@ -18,6 +18,7 @@ class ElearningApp extends Component {
       return arrTitle.title});
     return title[item];
   }
+  
   // componentDidMount(){
   //   const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelSoNhieu, levelMauSac, levelGiaDinh, levelThoiGian} = this.props;
   //   const { levelRutGon3, levelRutGon6, levelRutGon9 } = this.props;

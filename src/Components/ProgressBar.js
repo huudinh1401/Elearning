@@ -6,11 +6,11 @@ export default class ProgressBar extends Component {
         const {backgroundColor} = this.props;
         return (
             <View style={{ 
-                flex: 1,
-                backgroundColor: backgroundColor,
-                height: 10 * ratio(height),
-                borderRadius: 3 * ratio(height),
-            }}>
+                    flex: 1,
+                    backgroundColor: backgroundColor,
+                    height: 10 * ratio(height),
+                    borderRadius: 3 * ratio(height),
+                }}>
             </View>
         );
     }
