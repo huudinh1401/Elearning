@@ -3,8 +3,9 @@
  import React from 'react';
  import { createAppContainer } from 'react-navigation';
  import { Provider } from 'react-redux';
+ import { PersistGate } from 'redux-persist/lib/integration/react';
  import RoutePage from './RoutePage'
- import store from './src/redux/store'
+ import { persistor, store } from './src/redux/store'
 
 
 
@@ -14,7 +15,10 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store = {store}>
-        <AppContainer />
+        <PersistGate loading={null} persistor={persistor}>
+          <AppContainer />
+        </PersistGate>
+        
       </Provider>
     );
   }
