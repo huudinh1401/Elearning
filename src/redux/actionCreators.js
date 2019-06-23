@@ -14,8 +14,8 @@ export function LevelDongVat() {
 export function LevelQuanAo() {
     return { type: 'LEVEL_QUANAO' };
 }
-export function LevelSoNhieu() {
-    return { type: 'LEVEL_SONHIEU' };
+export function LevelLuyenNoi() {
+    return { type: 'LEVEL_LUYENNOI' };
 }
 export function LevelMauSac() {
     return { type: 'LEVEL_MAUSAC' };
@@ -70,6 +70,11 @@ export function isChoosingD(Choosed) {
         type: 'IS_CHOOSING_D', Choosed
     };
 }
+export function isChoosingSpeak(Choosed) {
+    return { 
+        type: 'IS_CHOOSING_SPEAK', Choosed
+    };
+}
 
 export function isCheckingTrue() {
     return { type: 'IS_CHECKING_TRUE' };
@@ -78,6 +83,16 @@ export function isCheckingTrue() {
 export function isCheckingFalse(textAnswer) {
     return { 
         type: 'IS_CHECKING_FALSE', textAnswer
+    };
+}
+export function isCheckingSpeakTrue(textAnswer) {
+    return { 
+        type: 'IS_CHECKING_SPEAK_TRUE', textAnswer
+    };
+}
+export function isCheckingSpeakFalse(textAnswer) {
+    return { 
+        type: 'IS_CHECKING_SPEAK_FALSE', textAnswer
     };
 }
 export function isScore1(Score1) {

@@ -7,7 +7,7 @@ import levelCB2Reducer from './levelCB2Reducer';
 import levelCumTuReducer from './levelCumTuReducer';
 import levelDongVatReducer from './levelDongVatReducer';
 import levelQuanAoReducer from './levelQuanAoReducer';
-import levelSoNhieuReducer from './levelSoNhieuReducer';
+import levelLuyenNoiReducer from './levelLuyenNoiReducer';
 import levelMauSacReducer from './levelMauSacReducer';
 import levelGiaDinhReducer from './levelGiaDinhReducer';
 import levelThoiGianReducer from './levelThoiGianReducer';
@@ -19,6 +19,7 @@ import levelRutGon9Reducer from './levelRutGon9Reducer';
 import dataSourceReducer from './dataSourceReducer';
 import errorReducer from './errorReducer';
 
+import choosingSpeakReducer from './choosingSpeakReducer';
 import choosingAReducer from './choosingAReducer';
 import choosingBReducer from './choosingBReducer';
 import choosingCReducer from './choosingCReducer';
@@ -44,7 +45,7 @@ const reducer = combineReducers({
     levelCumTu: levelCumTuReducer,
     levelDongVat: levelDongVatReducer,
     levelQuanAo: levelQuanAoReducer,
-    levelSoNhieu: levelSoNhieuReducer,
+    levelLuyenNoi: levelLuyenNoiReducer,
     levelMauSac: levelMauSacReducer,
     levelGiaDinh: levelGiaDinhReducer,
     levelThoiGian: levelThoiGianReducer,
@@ -60,6 +61,7 @@ const reducer = combineReducers({
     ChoosingB: choosingBReducer,
     ChoosingC: choosingCReducer,
     ChoosingD: choosingDReducer,
+    ChoosingSpeak: choosingSpeakReducer,
     Choosed: choosedReducer,
 
     Checking: checkingReducer,

@@ -8,8 +8,4 @@ function getContent(title, level, stt) {
 
 }
 
-
-// getContent('CB1', 'Easy', '3')
-// .then(content => console.log(content))
-// .catch(err => console.log(err));
 export default getContent;

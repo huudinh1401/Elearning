@@ -1,4 +1,5 @@
 const choosedReducer = (state = null, action) => {
+    if (action.type === 'IS_CHOOSING_SPEAK') return action.Choosed;
     if (action.type === 'IS_CHOOSING_A') return action.Choosed;
     if (action.type === 'IS_CHOOSING_B') return action.Choosed;
     if (action.type === 'IS_CHOOSING_C') return action.Choosed;

@@ -2,7 +2,7 @@
   
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian } from '../redux/actionCreators';
+import { getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelLuyenNoi, LevelThoiGian } from '../redux/actionCreators';
 import { Image, Dimensions, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 
@@ -15,7 +15,7 @@ class Result extends Component {
   
   onPress = () => {
     const {levelCB1, levelCB2, levelCumTu, levelDongVat, levelGiaDinh, levelMauSac, Score} = this.props;
-    const {levelQuanAo, levelSoNhieu, levelThoiGian} = this.props;
+    const {levelQuanAo, levelLuyenNoi, levelThoiGian} = this.props;
     
    
     if (Score == 3){
@@ -26,9 +26,9 @@ class Result extends Component {
       if (levelCumTu == 3 && levelDongVat == -1) this.props.LevelDongVat();
       if (levelDongVat == 3){
         if (levelQuanAo == -1) this.props.LevelQuanAo();
-        if (levelSoNhieu == -1)this.props.LevelSoNhieu();
+        if (levelLuyenNoi == -1)this.props.LevelLuyenNoi();
       }
-      if (levelSoNhieu == 3 && levelMauSac == -1) this.props.LevelMauSac();
+      if (levelLuyenNoi == 3 && levelMauSac == -1) this.props.LevelMauSac();
       if (levelMauSac == 3){
         if (levelGiaDinh == -1) this.props.LevelGiaDinh();
         if (levelThoiGian == -1)this.props.LevelThoiGian();
@@ -156,10 +156,10 @@ function mapStateToProps(state) {
     levelCumTu: state.levelCumTu,
     levelDongVat: state.levelDongVat, 
     levelQuanAo: state.levelQuanAo, 
-    levelSoNhieu: state.levelSoNhieu,
+    levelLuyenNoi: state.levelLuyenNoi,
     levelMauSac: state.levelMauSac, 
     levelGiaDinh: state.levelGiaDinh, 
     levelThoiGian: state.levelThoiGian,
   };
 }
-export default connect(mapStateToProps, { getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian })(Result);
+export default connect(mapStateToProps, { getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelLuyenNoi, LevelThoiGian })(Result);

@@ -1,24 +1,43 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3, isScore } from '../redux/actionCreators';
+import { isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3, isScore, isCheckingSpeakTrue, isCheckingSpeakFalse } from '../redux/actionCreators';
 
 class ButtonCheck extends Component {
     onPressChecking = () => {
-        const { Choosed, answer, stt } = this.props;
+        const { Choosed, answer, stt, Title, translate } = this.props;
         
         if (Choosed === answer){
-          this.props.isScore();
-          this.props.isCheckingTrue();
-          if (stt == 1) this.props.isScore1(1);
-          else if (stt == 2) this.props.isScore2(1);
-          else if (stt == 3) this.props.isScore3(1);
+          if (Title === "LuyenNoi"){
+            this.props.isCheckingSpeakTrue(translate);
+            this.props.isScore();
+            if (stt == 1) this.props.isScore1(1);
+            else if (stt == 2) this.props.isScore2(1);
+            else if (stt == 3) this.props.isScore3(1);
+          }
+          else {
+            this.props.isCheckingTrue();
+            this.props.isScore();
+            if (stt == 1) this.props.isScore1(1);
+            else if (stt == 2) this.props.isScore2(1);
+            else if (stt == 3) this.props.isScore3(1);
+          }
         }
         else {
-          this.props.isCheckingFalse(answer);
-          if(stt == 1) this.props.isScore1(2);
-          else if (stt == 2) this.props.isScore2(2);
-          else if (stt == 3) this.props.isScore3(2);
+          if (Title === "LuyenNoi"){
+            this.props.isCheckingSpeakFalse(translate);
+            if(stt == 1) this.props.isScore1(2);
+            else if (stt == 2) this.props.isScore2(2);
+            else if (stt == 3) this.props.isScore3(2);
+          }
+          else {
+            this.props.isCheckingFalse(answer);
+            if(stt == 1) this.props.isScore1(2);
+            else if (stt == 2) this.props.isScore2(2);
+            else if (stt == 3) this.props.isScore3(2);
+          }
+          
+          
         }
     }
     disabledTouchCheckButton(){
@@ -33,11 +52,9 @@ class ButtonCheck extends Component {
     }
     render() {
         return (
-            
-                <TouchableOpacity disabled = {this.disabledTouchCheckButton()} style={this.getbackgroundColorCheckingButton()}  onPress={ () => this.onPressChecking()}>  
-                  <Text style={{ padding: 5 * ratio(height), textDecorationLine: 'underline',fontWeight: 'bold', fontSize: 18 * ratio(height), color:'#FFFFFF' }}>Kiểm Tra</Text>
-                </TouchableOpacity>
-            
+          <TouchableOpacity disabled = {this.disabledTouchCheckButton()} style={this.getbackgroundColorCheckingButton()}  onPress={ () => this.onPressChecking()}>  
+            <Text style={{ padding: 5 * ratio(height), textDecorationLine: 'underline',fontWeight: 'bold', fontSize: 18 * ratio(height), color:'#FFFFFF' }}>Kiểm Tra</Text>
+          </TouchableOpacity>
         );
     }
 }
@@ -75,4 +92,4 @@ function mapStateToProps(state) {
     };
   }
   
-  export default connect(mapStateToProps, {isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3, isScore})(ButtonCheck);
+  export default connect(mapStateToProps, {isCheckingTrue, isCheckingFalse, isScore1, isScore2, isScore3, isScore, isCheckingSpeakTrue, isCheckingSpeakFalse })(ButtonCheck);

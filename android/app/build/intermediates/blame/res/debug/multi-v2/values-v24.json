@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/saru/Intern/Elearning/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "/home/saru/Saru/Elearning/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/home/saru/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/394c932e19bc8a622f953ca3194558b3/res/values-v24/values-v24.xml",
+                    "source": "/home/saru/.gradle/caches/transforms-2/files-2.1/81395db93040c9d2dc45124c7bfe5ab4/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/saru/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0.aar/c90a90a5c9ad5dc2e8bf3b2174ff609d/res/values-v24/values-v24.xml",
+                    "source": "/home/saru/.gradle/caches/transforms-2/files-2.1/a80e38e08c6e331f920a34700f91fb9b/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

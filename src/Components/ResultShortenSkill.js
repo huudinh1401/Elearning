@@ -2,7 +2,7 @@
   
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { LevelRutGon3, LevelRutGon6, LevelRutGon9, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian } from '../redux/actionCreators';
+import { LevelRutGon3, LevelRutGon6, LevelRutGon9, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelLuyenNoi, LevelThoiGian } from '../redux/actionCreators';
 import { Image, Dimensions, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 
@@ -10,7 +10,7 @@ class ResultShortenSkill extends Component {
 
   onPress = () => {
     const {levelCB2, levelCumTu, levelDongVat, levelGiaDinh, levelMauSac, Score} = this.props;
-    const {levelQuanAo, levelSoNhieu, levelThoiGian, levelRutGon3, levelRutGon6, levelRutGon9} = this.props;
+    const {levelQuanAo, levelLuyenNoi, levelThoiGian, levelRutGon3, levelRutGon6, levelRutGon9} = this.props;
     // this.setLevelTitle();
     if (Score == 3){
       if (levelRutGon3 == 1 || levelRutGon6 == 1 || levelRutGon9 == 1){
@@ -20,7 +20,7 @@ class ResultShortenSkill extends Component {
       if (levelRutGon6 == 1 || levelRutGon9 == 1){
         if (levelDongVat == -1) this.props.LevelDongVat();
         if (levelQuanAo == -1) this.props.LevelQuanAo();
-        if (levelSoNhieu == -1)this.props.LevelSoNhieu();
+        if (levelLuyenNoi == -1)this.props.LevelLuyenNoi();
       }
       if (levelRutGon9 == 1){
         if (levelMauSac == -1)this.props.LevelMauSac();
@@ -77,7 +77,7 @@ class ResultShortenSkill extends Component {
 
           <View style={{flex: 4,}}>
             <View style={{ alignItems: 'center', paddingBottom: 20 * ratio(height)}}>
-              <View style={{ alignItems: 'center', width:230  * ratio(height), height:130 * ratio(height)}}>
+              <View style={{ alignItems: 'center', backgroundColor: '#ffffff', width:230  * ratio(height), height:130 * ratio(height)}}>
                 <Image style={styles.ImgTheme} source={this.getImgFinishTop()}></Image>  
               </View>
               
@@ -146,7 +146,7 @@ function mapStateToProps(state) {
     levelCumTu: state.levelCumTu,
     levelDongVat: state.levelDongVat, 
     levelQuanAo: state.levelQuanAo, 
-    levelSoNhieu: state.levelSoNhieu,
+    levelLuyenNoi: state.levelLuyenNoi,
     levelMauSac: state.levelMauSac, 
     levelGiaDinh: state.levelGiaDinh, 
     levelThoiGian: state.levelThoiGian,
@@ -155,4 +155,7 @@ function mapStateToProps(state) {
     levelRutGon9: state.levelRutGon9,
   };
 }
-export default connect(mapStateToProps, { LevelRutGon3, LevelRutGon6, LevelRutGon9, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian})(ResultShortenSkill);
+export default connect(mapStateToProps, { LevelRutGon3, LevelRutGon6, LevelRutGon9, 
+                                          getLevelCB2, getLevelCumTu, LevelDongVat, 
+                                          LevelGiaDinh, LevelMauSac, LevelQuanAo, 
+                                          LevelLuyenNoi, LevelThoiGian})(ResultShortenSkill);

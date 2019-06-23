@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import getContent from '../data/getContent';
-import { fetchError, fetchSuccess ,isContinue, getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian } from '../redux/actionCreators';
+import { fetchError, fetchSuccess ,isContinue, getLevelCB1, getLevelCB2, getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelLuyenNoi, LevelThoiGian } from '../redux/actionCreators';
 import ItemTest from './ItemTest';
 import Form from './Form';
 import ButtonCheck from './ButtonCheck';
@@ -35,7 +35,7 @@ class Test extends Component {
         case "Cụm Từ": return this.props.getLevelCumTu();
         case "Động Vật": return this.props.LevelDongVat();
         case "Quần Áo": return this.props.LevelQuanAo();
-        case "Số Nhiều": return this.props.LevelSoNhieu();
+        case "Luyện Nói": return this.props.LevelLuyenNoi();
         case "Màu Sắc": return this.props.LevelMauSac();
         case "Gia Đình": return this.props.LevelGiaDinh();
         case "Thời Gian": return this.props.LevelThoiGian();
@@ -66,7 +66,7 @@ class Test extends Component {
   render() {
     const {textTitle, textAnswer, backgroundColorChecking} = this.props;
     const { Title, Level, img, title, stt } = this.props;
-    const { type, content, answerA, answerB, answerC, answerD, answer } = this.props.dataSource;
+    const { type, content, answerA, answerB, answerC, answerD, answer, translate } = this.props.dataSource;
     const { Score1, Score2, Score3 } = this.props;
 
     return (
@@ -106,9 +106,9 @@ class Test extends Component {
             </View>
             <View >{
                       this.props.Checking? 
-                      <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title,Level, img, Title, stt)}>  
+                      <TouchableOpacity style={styles.buttonContinue}  onPress={ () => this.onPressContinue(title, Level, img, Title, stt)}>  
                           <Text style={styles.textContinueButton}> Tiếp Tục </Text>
-                      </TouchableOpacity> : <ButtonCheck stt = {stt} answer = {answer} Choosed = {this.props.Choosed}/>
+                      </TouchableOpacity> : <ButtonCheck stt = {stt} translate = {translate} answer = {answer} Title = {Title} Choosed = {this.props.Choosed}/>
                     } 
             </View>
           </View>
@@ -201,4 +201,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, { fetchSuccess, fetchError, isContinue, 
                                           getLevelCB1, getLevelCB2, getLevelCumTu, 
-                                          LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelSoNhieu, LevelThoiGian })(Test);
+                                          LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelLuyenNoi, LevelThoiGian })(Test);

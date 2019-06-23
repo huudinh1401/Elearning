@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getLevelCB1, getLevelCB2 ,getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelRutGon3, LevelRutGon6, LevelRutGon9, LevelSoNhieu, LevelThoiGian} from '../redux/actionCreators';
+import { getLevelCB1, getLevelCB2 ,getLevelCumTu, LevelDongVat, LevelGiaDinh, LevelMauSac, LevelQuanAo, LevelRutGon3, LevelRutGon6, LevelRutGon9, LevelLuyenNoi, LevelThoiGian} from '../redux/actionCreators';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import GroupTitle from '../Components/GroupTitle';
 
@@ -20,7 +20,7 @@ class ElearningApp extends Component {
   }
   
   // componentDidMount(){
-  //   const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelSoNhieu, levelMauSac, levelGiaDinh, levelThoiGian} = this.props;
+  //   const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelLuyenNoi, levelMauSac, levelGiaDinh, levelThoiGian} = this.props;
   //   const { levelRutGon3, levelRutGon6, levelRutGon9 } = this.props;
 
   //     if (levelCB1 == 3 || levelRutGon3 == 1){
@@ -32,9 +32,9 @@ class ElearningApp extends Component {
   //     }
   //     if (levelDongVat == 3){
   //       if (levelQuanAo == -1) this.props.LevelQuanAo();
-  //       if (levelSoNhieu == -1)this.props.LevelSoNhieu();
+  //       if (levelLuyenNoi == -1)this.props.LevelLuyenNoi();
   //     }
-  //     if (levelSoNhieu == 3 && levelMauSac == -1){
+  //     if (levelLuyenNoi == 3 && levelMauSac == -1){
   //       this.props.LevelMauSac();
   //     }
   //     if (levelMauSac == 3){
@@ -49,7 +49,7 @@ class ElearningApp extends Component {
   //     if (levelRutGon6 == 1 || levelRutGon9 == 1){
   //       if (levelDongVat == -1) this.props.LevelDongVat();
   //       if (levelQuanAo == -1) this.props.LevelQuanAo();
-  //       if (levelSoNhieu == -1)this.props.LevelSoNhieu();
+  //       if (levelLuyenNoi == -1)this.props.LevelLuyenNoi();
   //     }
   //     if (levelRutGon9 == 1){
   //       if (levelMauSac == -1)this.props.LevelMauSac();
@@ -60,7 +60,7 @@ class ElearningApp extends Component {
   
   render() {
     const { navigate } = this.props.navigation;
-    const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelSoNhieu, levelMauSac, levelGiaDinh, levelThoiGian, levelRutGon3, levelRutGon6, levelRutGon9 } = this.props;
+    const { levelCB1, levelCB2, levelCumTu, levelDongVat, levelQuanAo, levelLuyenNoi, levelMauSac, levelGiaDinh, levelThoiGian, levelRutGon3, levelRutGon6, levelRutGon9 } = this.props;
     return (
       <View style = {styles.content}>
         <ScrollView>
@@ -77,7 +77,7 @@ class ElearningApp extends Component {
             navigate = { navigate }
             item1 = { this.gettitle(4) }  Item1 = { this.getTitle(4) } Level1 = {levelDongVat} image1 = {require('../image/animal_1.png')}
             item2 = { this.gettitle(5) }  Item2 = { this.getTitle(5) } Level2 = {levelQuanAo} image2 = {require('../image/clothe_1.png')} 
-            item3 = { this.gettitle(6) }  Item3 = { this.getTitle(6) } Level3 = {levelSoNhieu} image3 = {require('../image/flower_1.png')}
+            item3 = { this.gettitle(6) }  Item3 = { this.getTitle(6) } Level3 = {levelLuyenNoi} image3 = {require('../image/flower_1.png')}
             itemTest = { this.gettitle(7) } ItemTest = { this.getTitle(7)}  Level4 = {levelRutGon6}
           />
 
@@ -102,7 +102,7 @@ function mapStateToProps(state) {
     levelCumTu: state.levelCumTu,
     levelDongVat: state.levelDongVat,
     levelQuanAo: state.levelQuanAo,
-    levelSoNhieu: state.levelSoNhieu,
+    levelLuyenNoi: state.levelLuyenNoi,
     levelMauSac: state.levelMauSac,
     levelGiaDinh: state.levelGiaDinh,
     levelThoiGian: state.levelThoiGian,
