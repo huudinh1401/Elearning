@@ -2498,6 +2498,11 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
+
 handlebars@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.2.tgz#b6b37c1ced0306b221e094fc7aca3ec23b131b67"
@@ -3652,9 +3657,9 @@ lodash.throttle@^4.1.1:
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash@^4.17.11, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.6.1:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
@@ -4902,6 +4907,13 @@ react-deep-force-update@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.1.2.tgz#3d2ae45c2c9040cbb1772be52f8ea1ade6ca2ee1"
   integrity sha512-WUSQJ4P/wWcusaH+zZmbECOk7H5N2pOIl0vzheeornkIMhu+qrNdGFm0bDZLCb0hSF0jf/kH1SgkNGfBdTc4wA==
 
+react-device-detect@^1.6.2:
+  version "1.9.10"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.9.10.tgz#3ea17e1383fef87886fb85cc850747dad306d050"
+  integrity sha512-Rb618NuNwJojJeIgI5UoONwztbd4wMT4TBofzvYOHnPNu61LYYz8b78cXQb7kXRrPn6iI5T1gFtNQh0GxHEPxw==
+  dependencies:
+    ua-parser-js "^0.7.20"
+
 react-devtools-core@^3.6.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-3.6.1.tgz#51af81ceada65209bbccb8b547a01187cd1cbf04"
@@ -4919,6 +4931,21 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-native-device-info@^2.1.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.3.2.tgz#db2b8f135aaf2515583e367ab791dcc7d2f0d14c"
+  integrity sha512-ccpPuUbwhw5uYdVwN1UJp6ykMZz6U/u82HNM3oJ7O6MP8RIMlMDkHbqR4O0sDtUSuRMGiqqRzFtmOLFYeQ0ODw==
+
+react-native-gesture-handler@^1.3.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.5.0.tgz#df7dc5285c152e0656db70f55200fa632c4f45af"
+  integrity sha512-YUOXHsGLajK1cFReQ4Xh0H9GUTxDW9cUZEVu1q+dVqur2urSKi63KklAFB2l8Neob9nl1E/w0c5hGcBP9FMCIA==
+  dependencies:
+    hammerjs "^2.0.8"
+    hoist-non-react-statics "^2.3.1"
+    invariant "^2.2.4"
+    prop-types "^15.7.2"
 
 react-native-safe-area-view@^0.14.1:
   version "0.14.5"
@@ -4938,6 +4965,16 @@ react-native-tab-view@^1.2.0, react-native-tab-view@^1.4.1:
   integrity sha512-Bke8KkDcDhvB/z0AS7MnQKMD2p6Kwfc1rSKlMOvg9CC5CnClQ2QEnhPSbwegKDYhUkBI92iH/BYy7hNSm5kbUQ==
   dependencies:
     prop-types "^15.6.1"
+
+react-native-tts@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-tts/-/react-native-tts-3.0.0.tgz#987d6bc5430f7d0bdc0c7c278eb72744fe3ec516"
+  integrity sha512-ccaKP393e5+DHEJ/GEA7uX2HEuvnW6gXB0jwT+SUHbmSV+8FY3HFMV3JUxL7YQSigSXXLAbbIFYgmPhjNcVYBw==
+
+react-native-voice@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-voice/-/react-native-voice-0.3.0.tgz#2ca3ff8f8f6fc6d087e10b6d3ecd50af8e01a166"
+  integrity sha512-puSrXCNn1MM03UZkY8q+GW931OqBCEBCiupNK4vD8i49esGqRDDmzv8sRYyEgXj5ScVDKe6lnlKCmJSn5Wo2UA==
 
 react-native@0.59.9:
   version "0.59.9"
@@ -5129,6 +5166,11 @@ realpath-native@^1.1.0:
   integrity sha512-wlgPA6cCIIg9gKz0fgAPjnzh4yR/LnXovwuo9hvyGvx3h8nX4+/iLZplfUWasXpqD8BdnGnP5njOFjkUwPzvjA==
   dependencies:
     util.promisify "^1.0.0"
+
+redux-persist@^5.10.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.10.0.tgz#5d8d802c5571e55924efc1c3a9b23575283be62b"
+  integrity sha512-sSJAzNq7zka3qVHKce1hbvqf0Vf5DuTVm7dr4GtsqQVOexnrvbV47RWFiPxQ8fscnyiuWyD2O92DOxPl0tGCRg==
 
 redux@^4.0.1:
   version "4.0.1"
@@ -5980,7 +6022,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-ua-parser-js@^0.7.18:
+ua-parser-js@^0.7.18, ua-parser-js@^0.7.20:
   version "0.7.20"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.20.tgz#7527178b82f6a62a0f243d1f94fd30e3e3c21098"
   integrity sha512-8OaIKfzL5cpx8eCMAhhvTlft8GYF8b2eQr6JkCyVdrgjcytyOmPCXrqXFcUnhonRpLlh5yxEZVohm6mzaowUOw==
